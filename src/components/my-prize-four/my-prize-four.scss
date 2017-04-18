@@ -1,0 +1,55 @@
+.my-prize-four {
+  position: relative;
+}
+
+.my-user {
+  margin-top: 5vw;
+  padding:3vw 4.2vw 0 4.2vw;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  li {
+    margin-bottom: 1.2vw;
+    float: left;
+    width: 42.9vw;
+    height: 11.46vw;
+    line-height: 11.46vw;
+    background: #FFFFFF;
+    border: 1px solid #E4E4E4;
+    border-radius: 4px;
+    &:nth-child(odd) {
+      margin-right: 2.66vw;
+    }
+
+  }
+}
+
+.user-head {
+  width: 8.26vw;
+  height: 8.26vw;
+  vertical-align: middle;
+  margin: 0 3vw 0 3vw;
+  display: inline-block;
+  border-radius: 50%;
+  border: 1px solid #E4E4E4;
+
+}
+.name{
+  vertical-align: middle;
+  line-height: 8.26vw;
+  display: inline-block;
+  width: 25vw;
+  height: 8.26vw;
+  white-space: nowrap;
+  word-wrap:break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: '.PingFangSC-Regular';
+  font-size: 3rem;
+  color: #494949;
+  letter-spacing: -0.5px;
+}
+.null_people{
+  background:url("../../assets/images/头像空图@2x.png") no-repeat;
+  background-size: 100% 100%;
+}

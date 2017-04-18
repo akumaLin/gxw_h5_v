@@ -1,0 +1,97 @@
+.my-prize{
+  background: #FFFBFD;
+}
+
+.my-tb{
+  height:auto;
+  overflow: hidden;
+  table-layout:fixed;
+  width: 92.2vw;
+  margin: auto;
+  margin-top:4vw;
+  border-radius: 1.9vw;
+  border: 2px solid #FE4744;
+  border-right: none;
+  border-left: none;
+  background: #FFFFFF;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  color: #FE4744;
+  font-size: 3rem;
+  box-sizing:border-box;
+  padding-top: 3vw;
+  li{
+    width: 50%;
+    float: left;
+    text-align: left;
+    margin-bottom: 2vw;
+    height: 6.4vw;
+    line-height: 6.4vw;
+    &:nth-child(2){
+
+      text-align: right;
+      vertical-align: top;
+    }
+    &:last-child{
+      width: 100%;
+      text-align:left;
+      font-family: '.PingFangSC-Regular';
+      font-size: 3rem;
+      color: #9C9C9C;
+      letter-spacing:-0.5px;
+      margin-bottom: 1.5vw;
+      line-height: normal;
+      height: auto;
+    }
+  }
+  .btn{
+    border: 1px solid #FE4744;
+    background: none;
+    border-radius: 26.66vw;
+    width: 22.66vw;
+    height: 6.4vw;
+    font-family: '.PingFangSC-Regular';
+    font-size: 3rem;
+    color: #FE4744;
+  }
+}
+.my-p{
+  padding-top: 6vw;
+  padding-bottom: 6vw;
+  table-layout:fixed;
+  width: 92.2vw;
+  margin: auto;
+  margin-top:4vw;
+  border-radius: 1.9vw;
+  border: 2px solid #FE4744;
+  border-right: none;
+  border-left: none;
+  background: #FFFFFF;
+  padding-left:4vw;
+  padding-right:10vw;
+  color: #FE4744;
+  font-size: 3rem;
+  box-sizing:border-box;
+  overflow: scroll;
+  display: flex;
+  li{
+    flex: 1;
+    width: 50%;
+    margin-right: 7vw;
+    margin-left: 7vw;
+    float: left;
+    text-align: center;
+    .p-pic{
+      display: inline-block;
+      height: 19.7vw;
+      width: 20vw;
+      margin-top: 5.2vw;
+      border: 1px solid #C7C7C7;
+      margin-bottom: 2vw;
+
+    }
+  }
+}
+.p-pic p{
+  text-align: center;
+}

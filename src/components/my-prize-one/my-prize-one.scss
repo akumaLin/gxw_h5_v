@@ -1,0 +1,50 @@
+.my-prize-one{
+  height: 410px;
+  width: 100vw;
+  background: url("../../assets/images/bg@2x.png")no-repeat;
+  background-size: 100% 100%;
+  overflow: hidden;
+  position: relative;
+}
+.rules{
+  display: inline-block;
+  background: #F88C8C;
+  border-radius: 2.5vw 0 0 2.5vw;
+  color: white;
+  width: 17vw;
+  height: 5vw;
+  font-size: 3rem;
+  line-height:5vw;
+  text-align: center;
+  padding-left: 1.5vw;
+  position: absolute;
+  right: 0;
+  top: 7vw;
+}
+.j_card{
+  position: absolute;
+  bottom:4vw;
+  right: 4vw;
+  color: #FE4744;
+  font-size: 3rem;
+}
+
+.carousel-3d-container {
+  height: 320px;
+  .carousel-3d-slide {
+    border: none;
+    padding: 20px;
+    height: 620px!important;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border-radius:15px;
+    top:-100px;
+    opacity: 0.7!important;
+    .title { font-size: 22px;}
+  }
+}
+.carousel-3d-slide.current{
+  height: 298px!important;
+  opacity: 1!important;
+  top:0;
+}
