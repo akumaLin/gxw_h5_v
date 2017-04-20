@@ -31,7 +31,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
    width: 100vw;
-  padding-bottom: 5vh;
+
 }
   .p-title{
     width:55.2vw;

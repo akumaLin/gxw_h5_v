@@ -3,15 +3,19 @@
     "message": "查询成功",
     "list": {
       "wordNum": {
-        "word1_num": "0",
+        "word1_num": "1",
         "word2_num": "0",
         "word3_num": "2",
         "word4_num": "0"
       },
       "loveTitle": {
-        "love_id": "4",
+        "love_id": "1",
         "likes": "2",
-        "username": "231"
+        "username": "231",
+        "user_img": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=6509514,3865858695&fm=117&gp=0.jpg",
+        "ranking": 4,
+        "imageurl":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=6509514,3865858695&fm=117&gp=0.jpg"
+
       },
       "pointCode": {
         "pointNum": "4"
@@ -29,6 +33,18 @@
           "image": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=6509514,3865858695&fm=117&gp=0.jpg",
           "num": "1",
           "prize_id": "13"
+        },
+        {
+          "prize_name": "宝马",
+          "image": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=6509514,3865858695&fm=117&gp=0.jpg",
+          "num": "2",
+          "prize_id": "14"
+        },
+        {
+          "prize_name": "宝马",
+          "image": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=6509514,3865858695&fm=117&gp=0.jpg",
+          "num": "2",
+          "prize_id": "14"
         },
         {
           "prize_name": "宝马",

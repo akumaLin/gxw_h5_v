@@ -1,7 +1,7 @@
 <template>
   <div class="my-prize">
     <my-prize-one :wordNum="wordNum"></my-prize-one>
-    <my-prize-three :doGame="doGame"></my-prize-three>
+    <my-prize-three :loveTitle="loveTitle"></my-prize-three>
     <div style="position:relative">
       <p class="p-title">
         我的积分卡
@@ -32,6 +32,7 @@
       </ul>
     </div>
     <my-prize-five></my-prize-five>
+
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -44,15 +45,11 @@
     name: 'myPrize',
     data(){
       return {
-        doGame:false,
-      /*  get_prizes: [
-          {img: require('../../assets/images/title@2x.png'), text: "13卡片x1"},
-          {img: require('../../assets/images/title@2x.png'), text: "电脑x1"},
-          {img: require('../../assets/images/title@2x.png'), text: "电脑x1"},
-          {img: require('../../assets/images/title@2x.png'), text: "电脑x1"}
-        ],*/
+
+        showRules:false,
         wordNum:{},
         pointCode:{},
+        loveTitle:[],
         shareUser:[
           {
             "avatar": "",
@@ -66,9 +63,13 @@
       axios.get('/api/prizes')
         .then(function (response) {
           nowThis.wordNum=response.data.data.list.wordNum;
-          nowThis.pointCode=response.data.data.list.pointCode.pointNum;
+          nowThis.pointCode=response.data.data.list.pointCode.pointNum
+          console.log(response.data.data.list.loveTitle)
+          if(response.data.data.list.loveTitle.love_id != 0){
+            nowThis.loveTitle = response.data.data.list.loveTitle
+          }
           if(response.data.data.list.shareUser.length>0){
-            nowThis. shareUser=response.data.data.list.shareUser;
+            nowThis.shareUser=response.data.data.list.shareUser;
           }
           if(response.data.data.list.prize.length>0){
             nowThis.prize=response.data.data.list.prize;

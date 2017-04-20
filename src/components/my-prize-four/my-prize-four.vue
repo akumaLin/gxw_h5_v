@@ -1,7 +1,8 @@
 <template>
   <div class="my-prize-four">
     <p class="p-title">我邀请的用户</p>
-    <span class="sort-more">更多></span>
+    <span class="sort-more"  v-if="shareUser.length>=0">更多></span>
+    <span class="sort-more"  v-if="shareUser.length<0">去分享></span>
     <ul class="my-user">
       <li v-for="item in  shareUser">
         <div class="user-head" style="background-size: 100% 100%" :style="{backgroundImage: 'url(' + item.avatar + ')'}" v-if="item.avatar"></div>

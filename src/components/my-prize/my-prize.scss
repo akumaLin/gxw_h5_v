@@ -38,12 +38,13 @@
       font-family: '.PingFangSC-Regular';
       font-size: 3rem;
       color: #9C9C9C;
-      letter-spacing:-0.5px;
+      letter-spacing:-1px;
       margin-bottom: 1.5vw;
       line-height: normal;
       height: auto;
     }
   }
+
   .btn{
     border: 1px solid #FE4744;
     background: none;
@@ -94,4 +95,10 @@
 }
 .p-pic p{
   text-align: center;
+}
+@media  (max-width: 320px) {
+  .my-tb li:last-child {
+    font-size: 3rem;
+
+  }
 }

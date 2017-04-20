@@ -3,7 +3,8 @@
     <p class="p-title">
       我的优惠卷
     </p>
-    <span class="sort-more">更多></span>
+    <span class="sort-more" v-if="false">更多></span>
+    <span class="sort-more">去领取></span>
     <div class="coupon get" v-if="false">
       <div class="money">
         ¥<span>20</span>

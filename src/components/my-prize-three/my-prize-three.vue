@@ -6,17 +6,17 @@
   <span class="sort-more">查看排行榜</span>
    <div class="sort-tb">
      <table>
-     <tr v-if="doGame">
-       <td> 01</td>
-       <td><div class="head"></div></td>
-       <td>alex</td>
-       <td> <div class="sort-prize"></div></td>
+     <tr v-if="loveTitle.love_id>0">
+       <td> {{loveTitle.love_id}}</td>
+       <td><div class="head" style="background-size: 100% 100%" :style="{backgroundImage: 'url(' +loveTitle.user_img + ')'}"></div></td>
+       <td>{{loveTitle.username}}</td>
+       <td> <div class="sort-prize" style="background-size: 100% 100%" :style="{backgroundImage: 'url(' +loveTitle.user_img + ')'}"></div></td>
        <td>收到赞: </td>
-       <td>336</td>
+       <td>{{loveTitle.likes}}</td>
        <td>捐献:</td>
-       <td>¥3.5</td>
+       <td>¥{{loveTitle.ranking}}</td>
      </tr>
-       <tr v-if="!doGame" class="un_do">
+       <tr v-else class="un_do">
          <td>您尚未参加集赞活动哦，快去参加吧</td>
        </tr>
      </table>
@@ -27,8 +27,10 @@
 <script type="text/ecmascript-6">
     export default {
         name: 'myPrizeThree',
-        props:["doGame"]
-
+        props:["loveTitle"],
+        created(){
+            /*console.log(this.loveTitle)*/
+        }
     }
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>
