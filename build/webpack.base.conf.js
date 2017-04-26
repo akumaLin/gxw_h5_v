@@ -1,6 +1,7 @@
 var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
+var webpack = require("webpack")
 var vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve (dir) {
@@ -25,6 +26,7 @@ module.exports = {
       '@': resolve('src')
     }
   },
+
   module: {
     rules: [
       {
@@ -42,7 +44,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          name: utils.assetsPath('images/[name].[hash:7].[ext]')
         }
       },
       {
@@ -54,5 +56,6 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+
 }

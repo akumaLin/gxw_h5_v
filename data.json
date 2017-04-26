@@ -4,9 +4,9 @@
     "list": {
       "wordNum": {
         "word1_num": "1",
-        "word2_num": "0",
+        "word2_num": "3",
         "word3_num": "2",
-        "word4_num": "0"
+        "word4_num": "4"
       },
       "loveTitle": {
         "love_id": "1",
@@ -18,15 +18,9 @@
 
       },
       "pointCode": {
-        "pointNum": "4"
+        "pointNum": "14"
       },
-      "shareUser": [
-        {
-          "new_user_id": "23200",
-          "avatar": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=6509514,3865858695&fm=117&gp=0.jpg",
-          "username": "你遇见神仙了"
-        }
-      ],
+      "shareUser": [],
       "prize": [
         {
           "prize_name": "laoda ",
@@ -52,7 +46,27 @@
           "num": "2",
           "prize_id": "14"
         }
+      ],
+      "coupon": [
+        {
+          "order_id": "0",
+          "type_name": "满100减5元",
+          "type_money": "5.00",
+          "min_goods_amount": "100.00",
+          "use_start_date": "2017-04-21 00:00:00",
+          "use_end_date": "2017-05-21 00:00:00"
+        },
+        {
+          "order_id": "0",
+          "type_name": "满100减5元",
+          "type_money": "5.00",
+          "min_goods_amount": "100.00",
+          "use_start_date": "2017-04-21 00:00:00",
+          "use_end_date": "2017-05-21 00:00:00"
+        }
       ]
+
+
     }
   }
 

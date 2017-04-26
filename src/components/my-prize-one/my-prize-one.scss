@@ -15,13 +15,14 @@
   font-size: 3rem;
   line-height:5.5vw;
   text-align: center;
-  box-sizing: border-box;
+  vertical-align: middle;
   padding-left: 1.5vw;
   position: absolute;
   right: 0;
   top: 7vw;
 }
 .j_card{
+  display: block;
   position: absolute;
   bottom:4vw;
   right: 4vw;
@@ -68,16 +69,35 @@
   right: 0;
   margin: auto;
   border-radius: 2vw;
+  -webkit-border-radius: 2vw;
+  background: white;
+  z-index: 2;
+}
+.img_margin{
+  width: 90.1vw;
+  height: 90vh;
+  overflow: scroll;
+  position: fixed;
+  background: white;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 2vw;
   z-index: 2;
 }
 .img_rules{
   width: 100%;
-  height: 164.9vw;
-  background:url("../../assets/images/活动规则@2x.png") no-repeat;
+  height: 182.933vw;
+  background:url("../../assets/images/activeRu.png") no-repeat;
   background-size: 100% 100%;
   position: relative;
+  /*border-radius: 2vw;*/
+  overflow-y: hidden;
 }
 .close_x{
+  display: block;
   width: 5.33vw;
   height: 5.33vw;
   background: url("../../assets/images/x@2x.png") no-repeat;

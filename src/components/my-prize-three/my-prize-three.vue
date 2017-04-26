@@ -3,15 +3,15 @@
    <p class="p-title">
      我的集爱排行
    </p>
-  <span class="sort-more">查看排行榜</span>
+  <a class="sort-more" @touchstart="sortNum">查看排行榜</a>
    <div class="sort-tb">
      <table>
      <tr v-if="loveTitle.love_id>0">
        <td> {{loveTitle.love_id}}</td>
-       <td><div class="head" style="background-size: 100% 100%" :style="{backgroundImage: 'url(' +loveTitle.user_img + ')'}"></div></td>
+       <td><div class="head" style="background-size: 100% 100%" :style="loveTitle.user_img==''?{backgroundImage: 'url(' +sort_user_img + ')'}:{backgroundImage: 'url(' +loveTitle.user_img + ')'}"></div></td>
        <td>{{loveTitle.username}}</td>
-       <td> <div class="sort-prize" style="background-size: 100% 100%" :style="{backgroundImage: 'url(' +loveTitle.user_img + ')'}"></div></td>
-       <td>收到赞: </td>
+       <td> <div class="sort-prize" style="background-size: 100% 100%" :style="loveTitle.imageurl==''?{backgroundImage: 'url(' +sort_prize_img + ')'}:{backgroundImage: 'url(' +loveTitle.imageurl + ')'}"></div></td>
+       <td style="white-space: nowrap">收到赞: </td>
        <td>{{loveTitle.likes}}</td>
        <td>捐献:</td>
        <td>¥{{loveTitle.ranking}}</td>
@@ -28,9 +28,27 @@
     export default {
         name: 'myPrizeThree',
         props:["loveTitle"],
-        created(){
-            /*console.log(this.loveTitle)*/
-        }
+        data(){
+          return {
+              sort_user_img:require("../../assets/images/head_k.png"),
+              sort_prize_img:require("../../assets/images/prize_k.png")
+          }
+        },
+         methods:{
+           sortNum(){
+
+             var isApp =GetQueryString('is-app')
+             if(window.O2OHome){
+               O2OHome.gotoTabIndex ('2')
+             }
+             function GetQueryString(name) {
+               var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+               var r = window.location.search.substr(1).match(reg);
+               if (r!= null) return unescape(r[2]);
+               return null;
+             };
+           }
+         }
     }
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>

@@ -10,5 +10,19 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App }
+  components: { App },
+
 })
+
+Vue.filter('int_f', function (value) {
+  return parseInt(value)
+})
+
+Vue.filter('time_f', function (value) {
+  value=value.replace(/\-/g, "/");
+  var oldTime = new Date(value);
+  var curTime=oldTime.getFullYear()+"."+ parseInt(oldTime.getMonth()+1) +"."+oldTime.getDate()
+  return curTime
+})
+
+

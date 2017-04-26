@@ -16,6 +16,7 @@ export default {
   html{
     font-size: 1vw;
   }
+
   ::-webkit-scrollbar{display: none}
   ::-webkit-scrollbar-track{background-color:transparent;}
   ::-webkit-scrollbar-thumb{background-color:transparent;}
@@ -31,7 +32,9 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
    width: 100vw;
-
+  height: 100vh;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
   .p-title{
     width:55.2vw;
@@ -54,5 +57,6 @@ export default {
     position: absolute;
     right: 3vw;
     top: 1.3vw;
+    display: block;
   }
 </style>

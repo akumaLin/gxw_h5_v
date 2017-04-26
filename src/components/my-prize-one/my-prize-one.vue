@@ -10,7 +10,7 @@
 
       </slide>
     </carousel-3d>
-    <span class="j_card">去集卡></span>
+    <a class="j_card" @touchstart="getCard">去集卡></a>
   </div>
 
     <div class="my-price-two">
@@ -19,10 +19,12 @@
         <span class="card-badge" v-if="value!=0">x{{value}}</span>
       </div>
     </div>
-    <div class="Pop-ups" @touchmove.self.prevent.stop v-show="showRules">
+    <div class="Pop-ups"  v-show="showRules">
       <div class="img" >
-        <div  class="img_rules" @touchstart.stop>
+        <div class="img_margin">
+        <div  class="img_rules" >
           <div class="close_x" @touchstart="showRules=false"></div>
+        </div>
         </div>
       </div>
     </div>
@@ -41,10 +43,10 @@ export default {
       showRules:false,
       showcolor:0,
       slides:[
-          {img:require("../../assets/images/520卡.png"),img_1:require("../../assets/images/520卡-灰@2x.png")},
-          {img:require("../../assets/images/13卡.png"),img_1:require("../../assets/images/13卡-灰@2x.png")},
-          {img:require("../../assets/images/14卡.png"),img_1:require("../../assets/images/14卡-灰@2x.png")},
-          {img:require("../../assets/images/合成卡.png"),img_1:require("../../assets/images/合成卡-灰@2x.png")}
+          {img:require("../../assets/images/520.png"),img_1:require("../../assets/images/520_gray.png")},
+          {img:require("../../assets/images/13.png"),img_1:require("../../assets/images/13_gray@2x.png")},
+          {img:require("../../assets/images/14.png"),img_1:require("../../assets/images/14_gray.png")},
+          {img:require("../../assets/images/hec.png"),img_1:require("../../assets/images/hec_gray.png")}
        ]
 
       }
@@ -57,7 +59,12 @@ export default {
   methods:{
     onSlideChange:function(index){
       this.showcolor=index;
-      }
+      },
+    getCard(){
+            if(window.O2OHome){
+              O2OHome.gotoTabIndex ('1')
+            }
+    }
   }
 
 }

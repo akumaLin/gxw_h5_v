@@ -9,16 +9,28 @@
 position: relative;
 }
 .get{
-  background: url("../../assets/images/优惠券@2x.png")no-repeat;
+  background: url("../../assets/images/yhj.png")no-repeat;
   background-size: 100% 100%;
 }
 .gone{
-  background: url("../../assets/images/优惠券已过期@2x.png")no-repeat;
+  background: url("../../assets/images/gone.png")no-repeat;
   background-size: 100% 100%;
 }
 .already{
-  background: url("../../assets/images/优惠券已使用@2x.png")no-repeat;
+  background: url("../../assets/images/already.png")no-repeat;
   background-size: 100% 100%;
+}
+.coupon_icon{
+  width: 18vw;
+  height: 18vw;
+  line-height: 18vw;
+  vertical-align: middle;
+  position: absolute;
+  right: 3vw;
+  top:0;
+  bottom: 0;
+  margin: auto;
+
 }
 .money{
   display: inline-block;
@@ -53,16 +65,17 @@ position: relative;
     margin-top: 1.4vw;
     white-space: nowrap;
     font-family: 'PingFangSC-Regular';
-    font-size: 0.8rem;
+    font-size: 3rem;
     color:gray;
     letter-spacing: -1.02px;
   }
 }
 .use{
   height: 6.1vw;
-  line-height: 5vw;
+  line-height: 6.1vw;
+  width: 18.66vw;
   font-family: PingFangSC-Regular;
-  font-size: 0.7rem;
+  font-size: 3rem;
   color: #D11414;
   letter-spacing: 0.33px;
   border: 1px solid #D11414;
