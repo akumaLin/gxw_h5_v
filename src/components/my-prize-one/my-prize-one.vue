@@ -19,7 +19,7 @@
         <span class="card-badge" v-if="value!=0">x{{value}}</span>
       </div>
     </div>
-    <div class="Pop-ups"  v-show="showRules">
+    <div class="Pop-ups"  v-show="showRules" @touchmove.self.prevent>
       <div class="img" >
         <div class="img_margin">
         <div  class="img_rules" >
@@ -63,6 +63,8 @@ export default {
     getCard(){
             if(window.O2OHome){
               O2OHome.gotoTabIndex ('1')
+            }else {
+              window.location.href="http://www.baidu.com"//去集卡要跳转的绝对路径
             }
     }
   }

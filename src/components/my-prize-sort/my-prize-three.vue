@@ -36,17 +36,11 @@
         },
          methods:{
            sortNum(){
-
-             var isApp =GetQueryString('is-app')
              if(window.O2OHome){
                O2OHome.gotoTabIndex ('2')
+             }else {
+               window.location.href="http://www.baidu.com"//查看排行要跳转的绝对路径
              }
-             function GetQueryString(name) {
-               var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-               var r = window.location.search.substr(1).match(reg);
-               if (r!= null) return unescape(r[2]);
-               return null;
-             };
            }
          }
     }

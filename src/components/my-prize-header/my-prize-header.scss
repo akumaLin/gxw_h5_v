@@ -1,0 +1,31 @@
+.my-prize-header{
+  height: 15vw;
+  position: fixed;
+  top:0;
+  width: 100%;
+  background: rgba(227,44,44,0.90);
+}
+
+.top_bg{
+  background:transparent!important;
+  top: 2vw;
+  width: 90vw;
+  position: absolute;
+  padding-left: 5vw!important;
+}
+.mint-tab-item{
+  color: #E8E8E8!important;
+  font-family: '.PingFangSC-Regular';
+
+  letter-spacing: -0.39px;
+}
+.mint-tab-item-label{
+  font-size: 4.7vw;
+}
+.mint-navbar .mint-tab-item.is-selected{
+  border-bottom:3px solid white;
+}
+.mint-navbar .mint-tab-item{
+  padding: 4vw 0 2vw 0
+}
+

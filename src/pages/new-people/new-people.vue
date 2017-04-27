@@ -1,15 +1,15 @@
 <template>
   <div class="newPeople">
     <ul class="coupon">
-      <li v-for="item in coupon">
+      <li v-for="item in bonus_list">
         <div class="coupon_img">
-          <p style="color: white">¥ <span class="monney">20</span></p>
+          <p style="color: white">¥ <span class="monney">{{item.type_monney|int_f}}</span></p>
           <p>全品类</p>
           <p>满100可用</p>
         </div>
       </li>
     </ul>
-    <button class="btn">完成手机绑定，领取完整188元</button>
+    <button class="btn" @touchstart="write_tel_div=true">完成手机绑定，领取完整188元</button>
     <ul class="bot">
       <li>
         <router-link :to="{name:'myPrize',params:{top:true}}">查看已领优惠券</router-link>
@@ -40,31 +40,77 @@
         </div>
       </div>
     </div>
+
+    <div class="Pop-ups" v-if="write_tel_div" @touchmove.prevent>
+      <div class="write_tel">
+          <div class="close_x1" @touchstart="write_tel_div=false"></div>
+          <div class="w_tel_img"></div>
+          <span class="tel_text">绑定手机</span>
+          <div class="w_tel_edi">
+            <label for="tel_num">手机号</label>
+            <input type="text" id="tel_num" class="tel_num" v-model="tel">
+          </div>
+        <div class="w_tel_edi">
+          <label for="tel_code">验证码</label>
+          <input type="text" class="tel_code" id="tel_code" >
+          <span class="time_late"  @touchstart="getCode" v-text="acode" disabled="disabled"></span>
+        </div>
+        <div class="w_tel_edi time_late code_center" v-if="true">
+          验证码错误
+        </div>
+        <button class="tel_btn">提交</button>
+      </div>
+    </div>
+
   </div>
 </template>
 <script type="text/ecmascript-6">
-
+  import axios from 'axios';
   export default {
     name: '',
     data(){
       return {
+        tel:'',
+        code:'',
+        acode:"获取验证码",
+        write_tel_div:false,
         showRules:false,
-        coupon: [
-          {a: 1, b: 2},
-          {a: 1, b: 2},
-          {a: 1, b: 2},
-          {a: 1, b: 2},
-          {a: 1, b: 2},
-          {a: 1, b: 2},
-          {a: 1, b: 2},
-          {a: 1, b: 2},
-          {a: 1, b: 2}
-        ]
+        bonus_list: []
       }
     },
-    created(){
+    methods:{
+      getCode(){
+        if ((/^1[3|4|5|7|8][0-9]{9}$/.test(this.tel))) {
+          console.log(this.tel)
+      /*      this.$http.post('/api/tel', {tel: this.tel}).then(response => {*/
+              this.acode = 10;
+              let a = this.acode;
+             this.acode = "10秒再获取";
+              let timer = setInterval(() => {
+                a--;
+                this.acode = a + "秒再获取";
+                if (this.acode == "0秒再获取") {
+                  clearInterval(timer);
+                  this.acode = "获取验证码";
+                }
+              }, 1000)
+          /*  })*/
+        } else {
 
+         /* this.warmTel=true*/
+        }
+      },
     },
+    created(){
+      let nowThis = this
+      axios.get('/api/bonus_list')
+        .then(function (response) {
+
+    console.log(response.data.data)
+          nowThis.bonus_list=response.data.data
+        })
+
+    }
   }
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>

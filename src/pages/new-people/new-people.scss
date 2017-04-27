@@ -77,9 +77,9 @@
 }
 .Pop-ups{
   width:100vw;
-  height:100vh;
+  min-height: 177.86vw;
   background: rgba(0,0,0,0.60);
-  position: fixed;
+  position: absolute;
   top:0;
   left:0;
   z-index:1;
@@ -157,4 +157,78 @@ h2{
 }
 .red_color{
   color: red;
+}
+.write_tel{
+  height: 80.26vw;
+  width: 80.26vw;
+  background: white;
+  position:fixed;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 10vw;
+  box-sizing: border-box;
+  font-size: 4.8vw;
+  border-radius: 2vw;
+}
+.tel_text{
+  color:#DB3A23;
+  font-weight: bold;
+}
+.close_x1{
+  width: 5.33vw;
+  height: 5.33vw;
+  background: url("../../assets/images/x@2x.png") no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  top:2vw;
+  right: 3.5vw;
+  display: block;
+}
+.w_tel_img{
+  width: 10.86vw;
+  height: 13.86vw;
+  margin-left: 13.6vw;
+  background: url("../../assets/images/w_tel_img.png") no-repeat;
+  background-size: 100% 100%;
+  display: inline-block;
+}
+.tel_num{
+   height:7.2vw ;
+   width: 40.8vw;
+   border: 0.5px solid #979797;
+   margin-left: 2vw;
+ }
+.tel_code{
+  height:7.2vw ;
+  width:17.8vw;
+  border: 0.5px solid #979797;
+  margin-left: 2vw;
+}
+.w_tel_edi{
+  margin-top: 8vw;
+}
+.time_late{
+  font-size: 3.8rem;
+  color: #DB3A23;
+}
+.code_center{
+  text-align: center;
+  color: #737373;
+  margin-left: -6vw;
+  margin-top: 4vw;
+  margin-bottom: 2vw;
+}
+.tel_btn{
+  width: 59vw;
+  height: 9.06vw;
+  background: #DB3A23;
+  border: none;
+  border-radius: 6vw;
+  color: white;
+  font-size: 5vw;
+  position: absolute;
+  bottom: 3vw;
 }

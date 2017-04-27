@@ -50,6 +50,7 @@
     display: block;
     overflow-y: scroll;
     position: relative;
+    z-index:1;
 
   }
   .p-pic{

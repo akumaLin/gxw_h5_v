@@ -20,7 +20,9 @@
       "pointCode": {
         "pointNum": "14"
       },
-      "shareUser": [],
+      "shareUser": [
+
+      ],
       "prize": [
         {
           "prize_name": "laoda ",
@@ -65,8 +67,44 @@
           "use_end_date": "2017-05-21 00:00:00"
         }
       ]
-
-
-    }
+    },
+   "bonus_list":[
+     {
+       "type_name": "满100减5元",
+       "type_monney":"5.00"
+     },
+     {
+       "type_name": "满100减5元",
+       "type_monney":"5.00"
+     },
+     {
+       "type_name": "满100减5元",
+       "type_monney":"5.00"
+     },
+     {
+       "type_name": "满100减5元",
+       "type_monney":"5.00"
+     },
+     {
+       "type_name": "满100减5元",
+       "type_monney":"5.00"
+     },
+     {
+       "type_name": "满100减5元",
+       "type_monney":"52.00"
+     },
+     {
+       "type_name": "满100减5元",
+       "type_monney":"54.00"
+     },
+     {
+       "type_name": "满100减5元",
+       "type_monney":"150.00"
+     },
+     {
+       "type_name": "满100减5元",
+       "type_monney":"5.00"
+     }
+   ]
   }
 

@@ -23,17 +23,23 @@ var proxyTable = config.dev.proxyTable
 var app = express()
 
 var appData = require('../data.json')
-var prizes = appData
+var prizes = appData;
+var bonus_list=appData.bonus_list;
 
 var apiRoutes = express.Router()
 
+apiRoutes.get('/bonus_list', function (req, res) {
+  res.json({
+    errno: 0,
+    data: bonus_list
+  })
+})
 apiRoutes.get('/prizes', function (req, res) {
   res.json({
     errno: 0,
     data: prizes
   })
 })
-
 app.use('/api', apiRoutes)
 
 var compiler = webpack(webpackConfig)

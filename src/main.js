@@ -3,7 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router';
+import { Navbar, TabItem } from 'mint-ui';
 
+Vue.component(Navbar.name, Navbar);
+Vue.component(TabItem.name, TabItem);
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({

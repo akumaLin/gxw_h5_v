@@ -1,10 +1,11 @@
 <template>
-  <div class="my-prize" id="my-prize">
+  <div class="my-prize" id="my-prize" :class="{margin_top:isApp}">
+   <!-- <my-prize-header></my-prize-header>-->
     <my-prize-one :wordNum="wordNum"></my-prize-one>
     <my-prize-three :loveTitle="loveTitle"></my-prize-three>
     <div style="position:relative">
       <p class="p-title">我的积分卡</p>
-      <a href="#" class="sort-more" @touchstart="toBuy">去购买></a>
+      <a  class="sort-more" @touchstart="toBuy">去购买></a>
       <ul class="my-tb">
         <li>获取积分卡：{{pointCode}}张</li>
         <li>
@@ -12,6 +13,15 @@
         </li>
         <li>Tips：10张13卡可以兑换一张14卡，不含抽奖抽中的13卡</li>
       </ul>
+    </div>
+    <div class="confirm_z" @touchmove.prevent v-if="is_confirm">
+    </div>
+    <div class="confirm_14" @touchmove.prevent v-if="is_confirm">
+      <p>确定将10张13卡兑换成1张14卡了吗？换了就不能后悔咯！</p>
+      <div class="btn_bot">
+      <div class="btn_14" @touchstart="make_confirm">确定兑换</div>
+      <div class="btn_14" @touchstart="is_confirm=false">我点错了</div>
+      </div>
     </div>
     <my-prize-four :shareUser="shareUser"></my-prize-four>
     <div style="position:relative">
@@ -25,18 +35,20 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-  import { MessageBox } from 'mint-ui';
+/*  var a=require("http://1.jser.applinzi.com/520.html")*/
   import axios from 'axios';
+  import myPrizeHeader from "@/components/my-prize-header/my-prize-header.vue"
   import myPrizeOne from "@/components/my-prize-one/my-prize-one.vue"
-  import myPrizeThree from "@/components/my-prize-three/my-prize-three.vue"
-  import myPrizeFour from "@/components/my-prize-four/my-prize-four.vue"
-  import myPrizeFive from "@/components/my-prize-five/my-prize-five.vue"
+  import myPrizeThree from "@/components/my-prize-sort/my-prize-three.vue"
+  import myPrizeFour from "@/components/my-prize-people/my-prize-four.vue"
+  import myPrizeFive from "@/components/my-prize-coupon/my-prize-five.vue"
   import myRealPrize from "@/components/my-real-prize/my-real-prize.vue"
   export default {
     name: 'myPrize',
     data(){
       return {
-
+        isApp:false,
+        is_confirm:false,
         showRules: false,
         wordNum: {},
         pointCode: {},
@@ -53,18 +65,7 @@
       }
     },
     created(){
-
-    /* loginJudge(function (userId) {
-
-        $.get(url0, function(data) {
-
-        })
-      });
-*/
-       /*var a=getSession()
-
-      alert(a)*/
-
+        console.log(a)
       let nowThis = this
       axios.get('/api/prizes')
         .then(function (response) {
@@ -91,12 +92,7 @@
             let boolean = (timestamp < endtime)
             nowThis.timeout.push(boolean)
           }
-
-
         })
-        .catch(function (error) {
-        })
-
     },
     mounted(){
       const nowThis = this
@@ -105,23 +101,24 @@
         obj.parentNode.scrollTop = (obj.offsetHeight - obj.parentNode.offsetHeight);
     },
     methods:{
+      make_confirm(){
+        this.is_confirm=false
+      },
       isTrue(){
-
-        MessageBox({
-          title: '提示',
-          message: '确定执行此操作?',
-          closeOnClickModal: false,
-          showCancelButton:true
-        });
+      this.is_confirm=true
       },
      toBuy(){
         if(window.O2OHome){
           O2OHome.gotoTabIndex ('0')
+        }else {
+          window.location.href="http://www.baidu.com"//去购买要跳转的绝对路径
         }
       },
       toLottery(){
         if(window.O2OHome){
           O2OHome.gotoTabIndex ('0')
+        }else {
+          window.location.href="http://www.baidu.com"//去抽奖要跳转的绝对路径
         }
       }
     }
@@ -131,61 +128,11 @@
       myPrizeThree,
       myPrizeFour,
       myPrizeFive,
-      myRealPrize
+      myRealPrize,
+      myPrizeHeader
     }
   }
-/*  function loginJudge(callback) {
-    if (getSession) {
-      if (getSession()) {
-        callback && callback(getSession());
-      } else {
-        appEvent('isLogin');
-      }
-    } else if (O2OHome && O2OHome.getSession) {
-      if (O2OHome.getSession()) {
-        callback && callback(O2OHome.getSession());
-      } else {
-        appEvent('isLogin');
-      }
-    }
-  }
-  function appEvent(obj, data, notApp, judge) {
-    // O2OHome = {};
-    // O2OHome[obj] = function (data) {
-    // 	console.log(obj)
-    // 	console.log(data)
-    // 	alert(obj)
-    // 	alert(JSON.stringify(data))
-    // }
-    if (O2OHome) {
-      if (typeof obj == 'object') {
-        if (obj.type == 'login') {
-          if (O2OHome.isLogin()) {
-            obj.yes && obj.yes();
-          } else {
-            // userId = (core.lsDel('userId', 'remove'));
-            obj.no && obj.no();
-          }
-        }
-      } else {
-        if (data) {
-          if (typeof data != 'function') {
-            (obj == 'payWith' && isApp == 2) && (data = JSON.stringify(data));
-            O2OHome[obj] && O2OHome[obj](data);
-            notApp && (((typeof notApp == 'function') && judge == true) && notApp());
-          } else {
-            O2OHome[obj] && O2OHome[obj]();
-            (notApp == true) && data();
-          }
-        } else {
-          O2OHome[obj] && O2OHome[obj]();
-        }
-      }
-    } else {
-      data && ((typeof data == 'function') && data());
-      notApp && notApp();
-    }
-  }*/
+
 </script>
 <style lang="scss">
   @import 'my-prize.scss';
