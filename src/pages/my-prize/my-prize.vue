@@ -1,6 +1,6 @@
 <template>
   <div class="my-prize" id="my-prize" :class="{margin_top:isApp}">
-   <!-- <my-prize-header></my-prize-header>-->
+   <!-- <my-prize-header class="top_tab" v-if="isApp"></my-prize-header>-->
     <my-prize-one :wordNum="wordNum"></my-prize-one>
     <my-prize-three :loveTitle="loveTitle"></my-prize-three>
     <div style="position:relative">
@@ -51,7 +51,7 @@
         showRules: false,
         wordNum: {},
         pointCode: {},
-        loveTitle: [],
+        loveTitle: {},
         shareUser: [
           {
             "avatar": "",
@@ -65,21 +65,21 @@
     },
     created(){
       let nowThis = this
-      axios.get('/api/prizes')
+      axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":"14049"}')
         .then(function (response) {
-          nowThis.wordNum = response.data.data.list.wordNum;
-          nowThis.pointCode = response.data.data.list.pointCode.pointNum
-          if (response.data.data.list.loveTitle.love_id != 0) {
-            nowThis.loveTitle = response.data.data.list.loveTitle
+          nowThis.wordNum = response.data.list.wordNum;
+          nowThis.pointCode = response.data.list.pointCode.pointNum
+          if (response.data.list.loveTitle.love_id != 0) {
+            nowThis.loveTitle = response.data.list.loveTitle
           }
-          if (response.data.data.list.shareUser.length > 0) {
-            nowThis.shareUser = response.data.data.list.shareUser;
+          if (response.data.list.shareUser.length > 0) {
+            nowThis.shareUser = response.data.list.shareUser;
           }
-          if (response.data.data.list.prize.length > 0) {
-            nowThis.prize = response.data.data.list.prize;
+          if (response.data.list.prize.length > 0) {
+            nowThis.prize = response.data.list.prize;
 
           }
-          nowThis.coupon = response.data.data.list.coupon
+          nowThis.coupon = response.data.list.coupon
           let timestamp = Date.parse(new Date());
           timestamp = timestamp / 1000;
           for (let i = 0; i < nowThis.coupon.length; i++) {
@@ -100,23 +100,37 @@
     },
     methods:{
       make_confirm(){
-        this.is_confirm=false
+       var a=14049;
+        axios.post('http://192.168.1.21/gxw_mobile3/shop/love/exchangeword?query={"user_id":'+a+"}")
+          .then(function (response){
+               console.log(response.data.result)
+            if(response.data.result==true){
+              axios.get('/api/prizes')
+                .then(function (response) {
+                  this.wordNum = response.data.data.list.wordNum;
+                })
+            }
+          })
+
+
+
       },
       isTrue(){
       this.is_confirm=true
       },
      toBuy(){
-        if(window.O2OHome){
+       window.location.href="https://www.gxw520.com/mobile/index.php?r=user/index/buy"
+       /* if(window.O2OHome){
           O2OHome.gotoTabIndex ('0')
         }else {
-          window.location.href="http://www.baidu.com"//去购买要跳转的绝对路径
-        }
+          window.location.href="http://192.168.1.33/gxw_h5/src/cn/active_homepage.html?is-app=2&user-id=23200"//去购买要跳转的绝对路径
+        }*/
       },
       toLottery(){
         if(window.O2OHome){
           O2OHome.gotoTabIndex ('0')
         }else {
-          window.location.href="http://www.baidu.com"//去抽奖要跳转的绝对路径
+          window.location.href="http://192.168.1.33/gxw_h5/src/cn/active_homepage.html?is-app=2&user-id=23200"//去抽奖要跳转的绝对路径
         }
       }
     }
@@ -134,4 +148,7 @@
 </script>
 <style lang="scss">
   @import 'my-prize.scss';
+  .top_tab{
+    z-index: 9999;
+  }
 </style>

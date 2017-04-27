@@ -10,11 +10,11 @@
         ¥<span>{{item.type_money|int_f}}</span>
       </div>
       <div class="m-text">
-        <p style="color: #000000">全品类</p>
+        <p style="color: #000000">{{item.cate}}</p>
           <p>满{{item.min_goods_amount|int_f}}可用</p>
         <p>有效期：{{item.use_start_date|time_f}}-{{item.use_end_date|time_f}} </p>
       </div>
-      <button class="use" v-if="timeout[index]&&(item.order_id==0)">立即使用</button>
+      <span class="use"  v-if="timeout[index]&&(item.order_id==0)" @touchstart="useCoupon">立即使用</span>
       <div class="coupon_icon" :class="[{gone:item.order_id>0},{already:((!timeout[index])&&(item.order_id==0))}]"></div>
     </div>
     <div class="coupon no_things" v-if="coupon.length<=0">
@@ -33,14 +33,21 @@
           if(window.O2OHome){
             O2OHome.gotoTabIndex ('0')
           }else {
-            window.location.href="http://www.baidu.com"//获取优惠卷要跳转的绝对路径
+            window.location.href="http://192.168.1.33/gxw_h5/src/cn/lovegift_card.html?is-app=2&user-id=23200"//获取优惠卷要跳转的绝对路径
           }
         },
         moreCoupon(){
           if(window.O2OHome){
-            O2OHome.myCoupon()
-          }else {
+            O2OHome.gotoTabIndex ('0')}
+            else {
             window.location.href="http://www.baidu.com"//更多优惠卷要跳转的绝对路径
+          }
+        },
+        useCoupon(){
+          if(window.O2OHome){
+            O2OHome.gotoTabIndex ('0')
+          }else {
+            window.location.href="http://192.168.1.33/gxw_h5/src/cn/active_homepage.html?is-app=2&user-id=23200"//去抽奖要跳转的绝对路径
           }
         }
       }

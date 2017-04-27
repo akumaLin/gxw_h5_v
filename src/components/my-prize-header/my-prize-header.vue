@@ -1,5 +1,5 @@
 <template>
-  <div class="my-prize-header">
+  <div class="my-prize-header" @touchmove.prevent>
 
 
   <mt-navbar v-model="selected" :fixed="true" class="top_bg">
@@ -8,6 +8,11 @@
     <mt-tab-item id="3">为爱益行</mt-tab-item>
     <mt-tab-item id="4">我的奖品</mt-tab-item>
   </mt-navbar>
+
+    <object classid="clsid:F08DF954-8592-11D1-B16A-00C0F0283628" id="Slider1"
+            width="100vw" height="50vh">
+      <source src="http://192.168.1.33/gxw_h5/src/cn/active_homepage.html">
+    </object>
   </div>
 </template>
 <script type="text/ecmascript-6">
