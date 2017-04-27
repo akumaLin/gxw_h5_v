@@ -81,7 +81,6 @@
     methods:{
       getCode(){
         if ((/^1[3|4|5|7|8][0-9]{9}$/.test(this.tel))) {
-          console.log(this.tel)
       /*      this.$http.post('/api/tel', {tel: this.tel}).then(response => {*/
               this.acode = 10;
               let a = this.acode;
@@ -102,11 +101,10 @@
       },
     },
     created(){
+        document.title="新人专享页"
       let nowThis = this
       axios.get('/api/bonus_list')
         .then(function (response) {
-
-    console.log(response.data.data)
           nowThis.bonus_list=response.data.data
         })
 

@@ -35,7 +35,6 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-/*  var a=require("http://1.jser.applinzi.com/520.html")*/
   import axios from 'axios';
   import myPrizeHeader from "@/components/my-prize-header/my-prize-header.vue"
   import myPrizeOne from "@/components/my-prize-one/my-prize-one.vue"
@@ -65,7 +64,6 @@
       }
     },
     created(){
-        console.log(a)
       let nowThis = this
       axios.get('/api/prizes')
         .then(function (response) {
