@@ -62,6 +62,10 @@
       }
     },
     created(){
+
+       var a=window.location.href
+      alert(a)
+
       let nowThis = this
       axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":"14049"}')
    /*   axios.get('/api/prizes')*/
