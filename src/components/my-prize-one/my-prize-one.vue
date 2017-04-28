@@ -64,7 +64,7 @@ export default {
             if(window.O2OHome){
               O2OHome.gotoTabIndex ('1')
             }else {
-              window.location.href="http://www.baidu.com"//去集卡要跳转的绝对路径
+              window.location.href="http://192.168.1.105/dashboard/dist/cn/active_homepage.html"//去集卡要跳转的绝对路径
             }
     }
   }

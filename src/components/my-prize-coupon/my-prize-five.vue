@@ -10,7 +10,7 @@
         ¥<span>{{item.type_money|int_f}}</span>
       </div>
       <div class="m-text">
-       <!-- <p style="color: #000000">{{item.cate}}</p>-->
+        <p style="color: #000000">{{item.cate}}</p>
           <p>满{{item.min_goods_amount|int_f}}可用</p>
         <p>有效期：{{item.use_start_date|time_f}}-{{item.use_end_date|time_f}} </p>
       </div>
@@ -33,7 +33,7 @@
           if(window.O2OHome){
             O2OHome.gotoTabIndex ('0')
           }else {
-            window.location.href="http://192.168.1.33/gxw_h5/src/cn/lovegift_card.html?is-app=2&user-id=23200"//获取优惠卷要跳转的绝对路径
+            window.location.href="http://192.168.1.105/dashboard/dist/cn/active_homepage.html"//获取优惠卷要跳转的绝对路径
           }
         },
         moreCoupon(){
@@ -47,7 +47,7 @@
           if(window.O2OHome){
             O2OHome.gotoTabIndex ('0')
           }else {
-            window.location.href="http://192.168.1.33/gxw_h5/src/cn/active_homepage.html?is-app=2&user-id=23200"//去抽奖要跳转的绝对路径
+            window.location.href="http://192.168.1.105/dashboard/dist/cn/active_homepage.html"//去抽奖要跳转的绝对路径
           }
         }
       }

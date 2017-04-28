@@ -119,17 +119,17 @@
       },
      toBuy(){
        window.location.href="https://www.gxw520.com/mobile/index.php?r=user/index/buy"
-        if(window.O2OHome){
+       /* if(window.O2OHome){
           O2OHome.gotoTabIndex ('0')
         }else {
           window.location.href="http://192.168.1.33/gxw_h5/src/cn/active_homepage.html?is-app=2&user-id=23200"//去购买要跳转的绝对路径
-        }
+        }*/
       },
       toLottery(){
         if(window.O2OHome){
           O2OHome.gotoTabIndex ('0')
         }else {
-        window.location.href="http://192.168.1.33/gxw_h5/src/cn/active_homepage.html?is-app=2&user-id=23200"///去抽奖要跳转的绝对路径*/
+        window.location.href="http://192.168.1.105/dashboard/dist/cn/active_homepage.html "//去抽奖要跳转的绝对路径
         }
       }
     }
