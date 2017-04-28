@@ -1,5 +1,5 @@
 <template>
-  <swiper :options="swiperOption" class="my-p">
+  <swiper :options="swiperOption" class="my-p" :class="{p_height:prize.length>0}">
       <swiper-slide v-for="(item,index) in  prize" v-if="prize.length>0" :key="index">
        <div class="prize-center">
          <div class="p-pic" style="background-size: 100% 100%"
@@ -8,6 +8,10 @@
        </div>
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
+
+    <swiper-slide v-if="prize.length<=0" >
+       <p class="kk">啊哦～空空如也，快去抽奖吧！</p>
+    </swiper-slide>
     </swiper>
 </template>
 <script type="text/ecmascript-6">
@@ -45,13 +49,16 @@
     color: #FE4744;
     font-size: 3rem;
     box-sizing:border-box;
-    height: 46vw;
+
     white-space: nowrap;
     display: block;
     overflow-y: scroll;
     position: relative;
     z-index:1;
 
+  }
+  .p_height{
+    height: 46vw;
   }
   .p-pic{
     overflow-y: scroll;
@@ -63,7 +70,10 @@
     border: 1px solid #C7C7C7;
     margin-bottom: 2vw;
   }
-
+.kk{
+  padding-left: 4vw;
+  color: #9C9C9C ;
+}
   .prize_text{
     text-align: center;
   }

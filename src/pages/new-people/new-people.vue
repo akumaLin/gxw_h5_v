@@ -55,8 +55,7 @@
           <input type="text" class="tel_code" id="tel_code" >
           <span class="time_late"  @touchstart="getCode" v-text="acode" disabled="disabled"></span>
         </div>
-        <div class="w_tel_edi time_late code_center" v-if="true">
-          验证码错误
+        <div class="w_tel_edi time_late code_center" v-if="warminfo" v-text="warmtext">
         </div>
         <button class="tel_btn">提交</button>
       </div>
@@ -75,29 +74,37 @@
         acode:"获取验证码",
         write_tel_div:false,
         showRules:false,
-        bonus_list: []
+        bonus_list: [],
+        checke:true,
+        warminfo:false,
+        warmtext:"请填写11位的正确手机号"
       }
     },
     methods:{
       getCode(){
-        if ((/^1[3|4|5|7|8][0-9]{9}$/.test(this.tel))) {
-      /*      this.$http.post('/api/tel', {tel: this.tel}).then(response => {*/
+          if(this.checke==true){
+            if ((/^1[3|4|5|7|8][0-9]{9}$/.test(this.tel))) {
+              this.checke=false;
+              /*      this.$http.post('/api/tel', {tel: this.tel}).then(response => {*/
               this.acode = 10;
               let a = this.acode;
-             this.acode = "10秒再获取";
+              this.acode = "10秒再获取";
               let timer = setInterval(() => {
                 a--;
                 this.acode = a + "秒再获取";
                 if (this.acode == "0秒再获取") {
                   clearInterval(timer);
                   this.acode = "获取验证码";
+                  this.checke=true;
                 }
               }, 1000)
-          /*  })*/
-        } else {
+              /*  })*/
+            } else {
+               this.warminfo=true
+            }
 
-         /* this.warmTel=true*/
-        }
+          }
+
       },
     },
     created(){

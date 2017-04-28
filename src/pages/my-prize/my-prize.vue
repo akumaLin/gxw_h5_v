@@ -1,13 +1,12 @@
 <template>
   <div class="my-prize" id="my-prize" :class="{margin_top:isApp}">
-   <!-- <my-prize-header class="top_tab" v-if="isApp"></my-prize-header>-->
     <my-prize-one :wordNum="wordNum"></my-prize-one>
     <my-prize-three :loveTitle="loveTitle"></my-prize-three>
     <div style="position:relative">
       <p class="p-title">我的积分卡</p>
       <a  class="sort-more" @touchstart="toBuy">去购买></a>
       <ul class="my-tb">
-        <li>获取积分卡：{{pointCode}}张</li>
+        <li>获取积分卡：<span v-text="pointCode>0?pointCode:0"></span>张</li>
         <li>
           <button class="btn" v-if="pointCode >=10" @touchstart="isTrue" >兑换14卡</button>
         </li>
@@ -36,7 +35,6 @@
 </template>
 <script type="text/ecmascript-6">
   import axios from 'axios';
-  import myPrizeHeader from "@/components/my-prize-header/my-prize-header.vue"
   import myPrizeOne from "@/components/my-prize-one/my-prize-one.vue"
   import myPrizeThree from "@/components/my-prize-sort/my-prize-three.vue"
   import myPrizeFour from "@/components/my-prize-people/my-prize-four.vue"
@@ -66,6 +64,7 @@
     created(){
       let nowThis = this
       axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":"14049"}')
+   /*   axios.get('/api/prizes')*/
         .then(function (response) {
           nowThis.wordNum = response.data.list.wordNum;
           nowThis.pointCode = response.data.list.pointCode.pointNum
@@ -105,9 +104,9 @@
           .then(function (response){
                console.log(response.data.result)
             if(response.data.result==true){
-              axios.get('/api/prizes')
+              axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":"14049"}')
                 .then(function (response) {
-                  this.wordNum = response.data.data.list.wordNum;
+                  this.wordNum = response.data.list.wordNum;
                 })
             }
           })
@@ -120,17 +119,17 @@
       },
      toBuy(){
        window.location.href="https://www.gxw520.com/mobile/index.php?r=user/index/buy"
-       /* if(window.O2OHome){
+        if(window.O2OHome){
           O2OHome.gotoTabIndex ('0')
         }else {
           window.location.href="http://192.168.1.33/gxw_h5/src/cn/active_homepage.html?is-app=2&user-id=23200"//去购买要跳转的绝对路径
-        }*/
+        }
       },
       toLottery(){
         if(window.O2OHome){
           O2OHome.gotoTabIndex ('0')
         }else {
-          window.location.href="http://192.168.1.33/gxw_h5/src/cn/active_homepage.html?is-app=2&user-id=23200"//去抽奖要跳转的绝对路径
+        window.location.href="http://192.168.1.33/gxw_h5/src/cn/active_homepage.html?is-app=2&user-id=23200"///去抽奖要跳转的绝对路径*/
         }
       }
     }
@@ -141,7 +140,6 @@
       myPrizeFour,
       myPrizeFive,
       myRealPrize,
-      myPrizeHeader
     }
   }
 

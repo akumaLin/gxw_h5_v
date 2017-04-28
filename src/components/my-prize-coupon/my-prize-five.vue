@@ -10,7 +10,7 @@
         ¥<span>{{item.type_money|int_f}}</span>
       </div>
       <div class="m-text">
-        <p style="color: #000000">{{item.cate}}</p>
+       <!-- <p style="color: #000000">{{item.cate}}</p>-->
           <p>满{{item.min_goods_amount|int_f}}可用</p>
         <p>有效期：{{item.use_start_date|time_f}}-{{item.use_end_date|time_f}} </p>
       </div>
