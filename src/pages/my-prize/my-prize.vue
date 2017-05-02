@@ -47,6 +47,7 @@
         isApp:false,
         is_confirm:false,
         showRules: false,
+        id_num:"",
         wordNum: {},
         pointCode: {},
         loveTitle: {},
@@ -63,26 +64,29 @@
     },
     created(){
 
-       var a=window.location.href
-      alert(a)
-
+      let my_href=window.location.href
+      let url_index=my_href.lastIndexOf("&")
+      let user_id=my_href.substring(url_index+1)
+      let id_num_index=user_id.lastIndexOf("=")
+      let id_num=user_id.substring(id_num_index+1)
+      this.id_num=id_num
       let nowThis = this
-      axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":"14049"}')
-   /*   axios.get('/api/prizes')*/
+    /*  axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":'+this.id_num+'}')*/
+      axios.get('/api/prizes')
         .then(function (response) {
-          nowThis.wordNum = response.data.list.wordNum;
-          nowThis.pointCode = response.data.list.pointCode.pointNum
-          if (response.data.list.loveTitle.love_id != 0) {
-            nowThis.loveTitle = response.data.list.loveTitle
+          nowThis.wordNum = response.data.data.list.wordNum;
+          nowThis.pointCode = response.data.data.list.pointCode.pointNum
+          if (response.data.data.list.loveTitle.love_id != 0) {
+            nowThis.loveTitle = response.data.data.list.loveTitle
           }
-          if (response.data.list.shareUser.length > 0) {
-            nowThis.shareUser = response.data.list.shareUser;
+          if (response.data.data.list.shareUser.length > 0) {
+            nowThis.shareUser = response.data.data.list.shareUser;
           }
-          if (response.data.list.prize.length > 0) {
-            nowThis.prize = response.data.list.prize;
+          if (response.data.data.list.prize.length > 0) {
+            nowThis.prize = response.data.data.list.prize;
 
           }
-          nowThis.coupon = response.data.list.coupon
+          nowThis.coupon = response.data.data.list.coupon
           let timestamp = Date.parse(new Date());
           timestamp = timestamp / 1000;
           for (let i = 0; i < nowThis.coupon.length; i++) {
@@ -103,12 +107,12 @@
     },
     methods:{
       make_confirm(){
-       var a=14049;
-        axios.post('http://192.168.1.21/gxw_mobile3/shop/love/exchangeword?query={"user_id":'+a+"}")
+
+        axios.post('http://192.168.1.21/gxw_mobile3/shop/love/exchangeword?query={"user_id":'+this.id_num+"}")
           .then(function (response){
                console.log(response.data.result)
             if(response.data.result==true){
-              axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":"14049"}')
+              axios.post('http://192.168.1.21/gxw_mobile3/shop/love/exchangeword?query={"user_id":'+this.id_num+"}")
                 .then(function (response) {
                   this.wordNum = response.data.list.wordNum;
                 })
@@ -133,7 +137,7 @@
         if(window.O2OHome){
           O2OHome.gotoTabIndex ('0')
         }else {
-        window.location.href="http://192.168.1.105/dashboard/dist/cn/active_homepage.html "//去抽奖要跳转的绝对路径
+        window.location.href="cn/active_homepage.html "//去抽奖要跳转的绝对路径
         }
       }
     }

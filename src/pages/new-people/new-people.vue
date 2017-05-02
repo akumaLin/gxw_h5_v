@@ -1,8 +1,8 @@
 <template>
-  <div class="newPeople">
+  <div class="newPeople" :style="{background: 'url(' +my_people_bg+ ') no-repeat',backgroundSize:'100% 100%'}">
     <ul class="coupon">
       <li v-for="item in bonus_list">
-        <div class="coupon_img">
+        <div class="coupon_img" :style="{background: 'url(' +coupon_img_bg+ ') no-repeat',backgroundSize:'100% 100%'}">
           <p style="color: white">¥ <span class="monney">{{item.type_monney|int_f}}</span></p>
           <p>全品类</p>
           <p>满100可用</p>
@@ -36,7 +36,7 @@
           <p>3)活动中有任何疑问，即日起可进入共享网客户端“ <span class="red_color">我的--客户服务--智能客服、电话客服、在线客服”咨询反馈”</span>；</p>
           <p>4)共享网保留在法律规定范围内对上述规则进行解释的权利</p>
           </div>
-          <div class="close_x" @touchstart="showRules=false"></div>
+          <div class="close_x" @touchstart="showRules=false" :style="{background: 'url(' +close_x_bg+ ') no-repeat',backgroundSize:'100% 100%'}"></div>
         </div>
       </div>
     </div>
@@ -69,6 +69,9 @@
     name: '',
     data(){
       return {
+        close_x_bg:require("../../assets/images/x@2x.png"),
+        my_people_bg:require("../../assets/images/newPeople@2x.png"),
+        coupon_img_bg:require("../../assets/images/coupon.png"),
         tel:'',
         code:'',
         acode:"获取验证码",

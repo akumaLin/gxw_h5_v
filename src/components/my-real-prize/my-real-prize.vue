@@ -1,5 +1,6 @@
 <template>
-  <swiper :options="swiperOption" class="my-p" :class="{p_height:prize.length>0}">
+
+  <swiper :options="swiperOption"  class="my-p" :class="{p_height:prize.length>0}">
       <swiper-slide v-for="(item,index) in  prize" v-if="prize.length>0" :key="index">
        <div class="prize-center">
          <div class="p-pic" style="background-size: 100% 100%"
@@ -35,6 +36,7 @@
     }
 </script>
 <style lang="scss" rel="stylesheet/scss">
+
   .my-p{
     padding-top: 6vw;
     padding-bottom: 6vw;
@@ -76,6 +78,7 @@
 }
   .prize_text{
     text-align: center;
+    color: red;
   }
   .prize-center{
     text-align: center;

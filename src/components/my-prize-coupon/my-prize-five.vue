@@ -1,7 +1,7 @@
 <template>
   <div class="my-prize-five" id="coupon_bot">
     <p class="p-title">
-      我的优惠卷
+      我的优惠券
     </p>
     <span class="sort-more" v-if="coupon.length>0" @touchstart="moreCoupon">更多></span>
     <span class="sort-more" v-if="coupon.length<=0" @touchstart="getCoupon">去领取></span>
@@ -33,7 +33,7 @@
           if(window.O2OHome){
             O2OHome.gotoTabIndex ('0')
           }else {
-            window.location.href="http://192.168.1.105/dashboard/dist/cn/active_homepage.html"//获取优惠卷要跳转的绝对路径
+            window.location.href="cn/active_homepage.html"//获取优惠卷要跳转的绝对路径
           }
         },
         moreCoupon(){
@@ -47,7 +47,7 @@
           if(window.O2OHome){
             O2OHome.gotoTabIndex ('0')
           }else {
-            window.location.href="http://192.168.1.105/dashboard/dist/cn/active_homepage.html"//去抽奖要跳转的绝对路径
+            window.location.href="cn/active_homepage.html"//去抽奖要跳转的绝对路径
           }
         }
       }

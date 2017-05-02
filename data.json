@@ -65,6 +65,22 @@
           "min_goods_amount": "100.00",
           "use_start_date": "2017-04-21 00:00:00",
           "use_end_date": "2017-05-21 00:00:00"
+        },
+        {
+          "order_id": "0",
+          "type_name": "满100减5元",
+          "type_money": "5.00",
+          "min_goods_amount": "100.00",
+          "use_start_date": "2017-04-21 00:00:00",
+          "use_end_date": "2017-04-23 00:00:00"
+        },
+        {
+          "order_id": "1",
+          "type_name": "满100减5元",
+          "type_money": "5.00",
+          "min_goods_amount": "100.00",
+          "use_start_date": "2017-04-21 00:00:00",
+          "use_end_date": "2017-04-23 00:00:00"
         }
       ]
     },

@@ -1,6 +1,6 @@
 <template>
   <div>
-  <div class="my-prize-one">
+  <div class="my-prize-one" :style="{background: 'url(' +my_prize_one_bg+ ') no-repeat',backgroundSize:'100% 100%'}">
     <p class="p-title">
       集爱数字卡片
     </p>
@@ -22,7 +22,7 @@
     <div class="Pop-ups"  v-show="showRules" @touchmove.self.prevent>
       <div class="img" >
         <div class="img_margin">
-        <div  class="img_rules" >
+        <div  class="img_rules" :style="{background: 'url(' +my_prize_one_rules+ ') no-repeat',backgroundSize:'100% 100%'}">
           <div class="close_x" @touchstart="showRules=false"></div>
         </div>
         </div>
@@ -40,6 +40,8 @@ export default {
   ],
   data () {
     return {
+      my_prize_one_bg:require("../../assets/images/bg@2x.png"),
+      my_prize_one_rules:require("../../assets/images/activeRu.png"),
       showRules:false,
       showcolor:0,
       slides:[
@@ -64,7 +66,7 @@ export default {
             if(window.O2OHome){
               O2OHome.gotoTabIndex ('1')
             }else {
-              window.location.href="http://192.168.1.105/dashboard/dist/cn/active_homepage.html"//去集卡要跳转的绝对路径
+              window.location.href="cn/lovegift_card.html"//去集卡要跳转的绝对路径
             }
     }
   }
