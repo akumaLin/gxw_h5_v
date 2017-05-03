@@ -48,9 +48,15 @@
         is_confirm:false,
         showRules: false,
         id_num:"",
-        wordNum: {},
+
         pointCode: {},
         loveTitle: {},
+        wordNum: {
+          "word1_num": "0",
+          "word2_num": "0",
+          "word3_num": "0",
+          "word4_num": "0"
+        },
         shareUser: [
           {
             "avatar": "",
@@ -63,7 +69,6 @@
       }
     },
     created(){
-
       let my_href=window.location.href
       let url_index=my_href.lastIndexOf("&")
       let user_id=my_href.substring(url_index+1)
@@ -71,22 +76,51 @@
       let id_num=user_id.substring(id_num_index+1)
       this.id_num=id_num
       let nowThis = this
-    /*  axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":'+this.id_num+'}')*/
-      axios.get('/api/prizes')
+      axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":'+this.id_num+'}')
+     /* axios.get('/api/prizes')*/
         .then(function (response) {
-          nowThis.wordNum = response.data.data.list.wordNum;
-          nowThis.pointCode = response.data.data.list.pointCode.pointNum
-          if (response.data.data.list.loveTitle.love_id != 0) {
-            nowThis.loveTitle = response.data.data.list.loveTitle
-          }
-          if (response.data.data.list.shareUser.length > 0) {
-            nowThis.shareUser = response.data.data.list.shareUser;
-          }
-          if (response.data.data.list.prize.length > 0) {
-            nowThis.prize = response.data.data.list.prize;
 
+             if(response.data.result==false){
+             }else {
+               nowThis.wordNum = response.data.list.wordNum;
+             }
+
+          if(response.data.result==false){
+
+          }else {
+            nowThis.pointCode = response.data.list.pointCode.pointNum
           }
-          nowThis.coupon = response.data.data.list.coupon
+
+          if(response.data.result==false){
+
+          }else {
+            if (response.data.list.loveTitle.love_id != 0) {
+              nowThis.loveTitle = response.data.list.loveTitle
+            }
+          }
+          if(response.data.result==false){
+
+          }else {
+            if (response.data.list.shareUser.length > 0) {
+              nowThis.shareUser = response.data.list.shareUser;
+            }
+          }
+
+          if(response.data.result==false){
+
+          }else {
+            if (response.data.list.prize.length > 0) {
+              nowThis.prize = response.data.list.prize;
+
+            }
+          }
+
+          if(response.data.result==false){
+
+          }else {
+            nowThis.coupon = response.data.list.coupon
+          }
+
           let timestamp = Date.parse(new Date());
           timestamp = timestamp / 1000;
           for (let i = 0; i < nowThis.coupon.length; i++) {

@@ -22,14 +22,15 @@
               if(window.O2OHome){
                 O2OHome.myRequest ()
               }else {
-                window.location.href="http://www.baidu.com"//更多邀请要跳转的绝对路径
+                window.location.href="http://192.168.1.10/gxw520/mobile/index.php?r=user"//更多邀请要跳转的绝对路径
               }
             },
             toShare(){
               if(window.O2OHome){
                 O2OHome.share('https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=6509514,3865858695&fm=117&gp=0.jpg', 'http://192.168.1.210:8080/#/',"haha")
               }else {
-                window.location.href="http://www.baidu.com"//去分享要跳转的绝对路径
+               /* window.location.href="http://www.baidu.com"//去分享要跳转的绝对路径*/
+
               }
             }
        }

@@ -2,7 +2,7 @@
   <div>
   <div class="my-prize-one" :style="{background: 'url(' +my_prize_one_bg+ ') no-repeat',backgroundSize:'100% 100%'}">
     <p class="p-title">
-      集爱数字卡片
+      集赞数字卡片
     </p>
     <span class="rules" @touchstart="showRules=true">查看规则</span>
     <carousel-3d ref="carousel"  :minSwipeDistance="2" :animationSpeed="400" :onSlideChange="onSlideChange" :inverse-scaling="1500"  :height="260" :width="244.4" :space="450" >

@@ -1,7 +1,7 @@
 <template>
  <div class="my-price-three">
    <p class="p-title">
-     我的集爱排行
+     我的集赞排行
    </p>
   <a class="sort-more" @touchstart="sortNum">查看排行榜</a>
    <div class="sort-tb">

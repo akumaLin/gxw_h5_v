@@ -40,7 +40,8 @@
           if(window.O2OHome){
             O2OHome.gotoTabIndex ('0')}
             else {
-            window.location.href="http://www.baidu.com"//更多优惠卷要跳转的绝对路径
+          /*  window.location.href="http://www.baidu.com"//更多优惠卷要跳转的绝对路径*/
+          alert("请下载共享网app")
           }
         },
         useCoupon(){
