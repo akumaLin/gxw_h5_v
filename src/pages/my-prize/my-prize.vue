@@ -22,7 +22,7 @@
       <div class="btn_14" @touchstart="is_confirm=false">我点错了</div>
       </div>
     </div>
-    <my-prize-four :shareUser="shareUser"></my-prize-four>
+    <my-prize-four :shareUser="shareUser" @a_app="warm_app"></my-prize-four>
     <div style="position:relative">
       <p class="p-title">
         我的奖品
@@ -30,7 +30,16 @@
       <a class="sort-more" @touchstart="toLottery">去抽奖></a>
       <my-real-prize :prize="prize"></my-real-prize>
     </div>
-    <my-prize-five :coupon="coupon,timeout"></my-prize-five>
+    <my-prize-five :coupon="coupon,timeout" @a_app="warm_app"></my-prize-five>
+  <!--  <alert_app></alert_app>-->
+    <div class="confirm_z" @touchmove.prevent v-if="alert_app">
+    </div>
+    <div class="confirm_14" @touchmove.prevent v-if="alert_app">
+      <p style="text-align: center">请下载共享网app！</p>
+      <div class="btn_bot">
+        <div class="btn_14" style="border: none" @touchstart="alert_app=false">确定</div>
+      </div>
+    </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -40,6 +49,7 @@
   import myPrizeFour from "@/components/my-prize-people/my-prize-four.vue"
   import myPrizeFive from "@/components/my-prize-coupon/my-prize-five.vue"
   import myRealPrize from "@/components/my-real-prize/my-real-prize.vue"
+/*  import alert_app from "@/components/alert_app/alert_app.vue"*/
   export default {
     name: 'myPrize',
     data(){
@@ -48,7 +58,7 @@
         is_confirm:false,
         showRules: false,
         id_num:"",
-
+        alert_app:false,
         pointCode: {},
         loveTitle: {},
         wordNum: {
@@ -71,10 +81,13 @@
     created(){
       let my_href=window.location.href
       let url_index=my_href.lastIndexOf("&")
-      let user_id=my_href.substring(url_index+1)
-      let id_num_index=user_id.lastIndexOf("=")
-      let id_num=user_id.substring(id_num_index+1)
-      this.id_num=id_num
+              if(url_index>-1){
+                let user_id=my_href.substring(url_index+1)
+                let id_num_index=user_id.lastIndexOf("=")
+                let id_num=user_id.substring(id_num_index+1)
+                this.id_num=id_num
+              }
+      console.log(this.id_num)
       let nowThis = this
       axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":'+this.id_num+'}')
      /* axios.get('/api/prizes')*/
@@ -156,16 +169,24 @@
 
 
       },
+      warm_app(val){
+          this.alert_app=val
+      }
+     ,
       isTrue(){
       this.is_confirm=true
       },
      toBuy(){
-       window.location.href="https://www.gxw520.com/mobile/index.php?r=user/index/buy"
-       /* if(window.O2OHome){
-          O2OHome.gotoTabIndex ('0')
+        if(window.O2OHome){
+            if(this.id_num==null){
+              O2OHome.isLogin()
+            }else {
+              O2OHome.buyVipCard();
+            }
+
         }else {
-          window.location.href="http://192.168.1.33/gxw_h5/src/cn/active_homepage.html?is-app=2&user-id=23200"//去购买要跳转的绝对路径
-        }*/
+        window.location.href="https://www.gxw520.com/mobile/index.php?r=user/index/buy"//去购买要跳转的绝对路径
+        }
       },
       toLottery(){
         if(window.O2OHome){
@@ -182,6 +203,7 @@
       myPrizeFour,
       myPrizeFive,
       myRealPrize,
+     /* alert_app*/
     }
   }
 
