@@ -5,7 +5,7 @@
     </p>
     <span class="sort-more" v-if="coupon.length>0" @touchstart="moreCoupon">更多></span>
     <span class="sort-more" v-if="coupon.length<=0" @touchstart="getCoupon">去领取></span>
-    <div class="coupon get" v-for="(item,index) in coupon" v-if="coupon.length>0" >
+    <div class="coupon " v-for="(item,index) in coupon" v-if="coupon.length>0" :style="{background: 'url(' + yhj_bg+ ') no-repeat',backgroundSize:'100% 100%'}">
       <div class="money">
         ¥<span>{{item.type_money|int_f}}</span>
       </div>
@@ -26,6 +26,11 @@
 <script type="text/ecmascript-6">
     export default {
         name: 'myPrizeFive',
+        data(){
+          return{
+              yhj_bg:require("../../assets/images/yhj.png")
+          }
+        },
         props:["coupon","timeout"],
       methods:{
         getCoupon(){
