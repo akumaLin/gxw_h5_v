@@ -12,7 +12,7 @@
     <button class="btn" @touchstart="write_tel_div=true">完成手机绑定，领取完整188元</button>
     <ul class="bot">
       <li>
-        <router-link :to="{name:'myPrize',params:{top:true}}">查看已领优惠券</router-link>
+        <router-link :to="{name:'myPrize',params:{top:true},query:{isapp:'1',userid:id_num}}" >查看已领优惠券</router-link>
       </li>
       <li><a href="#" @touchstart="showRules=true">规则说明</a></li>
     </ul>
@@ -92,7 +92,7 @@
           if ((/^1[3|4|5|7|8][0-9]{9}$/.test(this.tel))) {
             this.checke = false;
             this.warminfo = false
-            axios.post('http://192.168.1.21/gxw_mobile3/shop/love/exchangeword?query={"tel"' + this.tel + "," + '"flag":"login"'+ "}").then(response => {
+            axios.post('http://192.168.1.10/gxw_mobile3/user/sms/send?query={"mobile":' +'"'+ this.tel + '"' + "," + '"flag":"login"'+ "}").then(response => {
               this.acode = 60;
               let a = this.acode;
               this.acode = "60秒再获取";
@@ -119,16 +119,24 @@
         console.log(this.tel)
         console.log(this.s_code)
         var nowThis = this
-        axios.post('http://192.168.1.21/gxw_mobile3/shop/love/exchangeword?query={"user_id":' + this.id_num + "," + "tel:" + this.tel + "," + "smscode:" + this.s_code + "}")
-          .then(function (response) {
-            if (response.data.result == true) {
-              this.write_tel_div = false
-            } else {
-              nowThis.warminfo = true
-              nowThis.warmtext = "验证码错误!";
+        if ((/^1[3|4|5|7|8][0-9]{9}$/.test(this.tel))){
+          axios.post('http://192.168.1.10/gxw_mobile3/user/index/changephone?query={"user_id":' +'"'+ this.id_num+'"' + "," + '"tel":'  +'"'+ this.tel  +'"'+ "," +'"smscode":'  +'"'+ this.s_code +'"' + "}")
+            .then(function (response) {
+              if (response.data.result == true) {
+                this.write_tel_div = false
+              } else {
+                nowThis.warminfo = true
+                nowThis.warmtext = "验证码错误!";
 
-            }
-          })
+              }
+            })
+        }else {
+
+          nowThis.warminfo = true
+          nowThis.warmtext = "请输入正确的手机号码!";
+        }
+
+
 
 
       }
@@ -145,6 +153,7 @@
         let id_num_index = user_id.lastIndexOf("=")
         let id_num = user_id.substring(id_num_index + 1)
         nowThis.id_num = id_num
+        console.log(nowThis.id_num)
       }
 
       document.title = "新人专享页"
