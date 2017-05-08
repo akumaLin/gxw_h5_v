@@ -1,17 +1,21 @@
 .newPeople {
   position: relative;
-  min-height: 177.86vw;
+ /* min-height: 177.86vw;*/
+  min-height: 100vh;
   width: 100vw;
+  overflow: hidden;
+  padding-top: 35vh;
+  box-sizing: border-box;
   /*background: url('../../assets/images/newPeople@2x.png') no-repeat;
   background-size: 100% 100%;*/
 }
 .coupon{
-  position: absolute;
-  top:68.5vw;
+  position: relative;
+  overflow: hidden;
   left: 0;
   right: 0;
   margin:auto;
-   height: auto;
+  height: auto;
   li{
     float: left;
     margin-right: 4.1vw;
@@ -46,20 +50,17 @@
   color:#CC1218;
   background: #FFDCDC;
   border: none;
+  display: block;
   border-radius: 26.666vw;
-  position: absolute;
-  bottom: 7vh;
-  left: 0;
-  right: 0;
   margin: auto;
   font-size: 5rem;
 }
 .bot{
-  position: absolute;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
   width: 100%;
   padding-left: 5vw;
   padding-right: 5vw;
-  bottom: 2vh;
   box-sizing: border-box;
   li{
     width: 50%;

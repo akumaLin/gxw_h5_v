@@ -12,7 +12,7 @@
     <button class="btn" @touchstart="write_tel_div=true">完成手机绑定，领取完整188元</button>
     <ul class="bot">
       <li>
-        <router-link :to="{name:'myPrize',params:{top:true},query:{isapp:'1',userid:id_num}}" >查看已领优惠券</router-link>
+        <router-link :to="{name:'myPrize',params:{top:true},query:{isapp:'1',userid:id_num}}">查看已领优惠券</router-link>
       </li>
       <li><a href="#" @touchstart="showRules=true">规则说明</a></li>
     </ul>
@@ -80,7 +80,18 @@
         acode: "获取验证码",
         write_tel_div: false,
         showRules: false,
-        bonus_list: [],
+        bonus_list: [
+          {type_money: "10", type_name: "全场通用劵"},
+          {type_money: "10", type_name: "满99可用"},
+          {type_money: "15", type_name: "满199可用"},
+          {type_money: "20", type_name: "满199可用"},
+          {type_money: "20", type_name: "满200可用"},
+          {type_money: "25", type_name: "满299可用"},
+          {type_money: "28", type_name: "满399可用"},
+          {type_money: "30", type_name: "满399可用"},
+          {type_money: "30", type_name: "满499可用"}
+
+        ],
         checke: true,
         warminfo: false,
         warmtext: "请填写11位的正确手机号"
@@ -89,10 +100,10 @@
     methods: {
       getCode(){
         if (this.checke == true) {
-          if ((/^1[3|4|5|7|8][0-9]{9}$/.test(this.tel))) {
+          if ((/^1[3|4|5|7|8|6][0-9]{9}$/.test(this.tel))) {
             this.checke = false;
             this.warminfo = false
-            axios.post('http://192.168.1.10/gxw_mobile3/user/sms/send?query={"mobile":' +'"'+ this.tel + '"' + "," + '"flag":"login"'+ "}").then(response => {
+            axios.post('http://192.168.1.10/gxw_mobile3/user/sms/send?query={"mobile":' + '"' + this.tel + '"' + "," + '"flag":"login"' + "}").then(response => {
               this.acode = 60;
               let a = this.acode;
               this.acode = "60秒再获取";
@@ -119,24 +130,22 @@
         console.log(this.tel)
         console.log(this.s_code)
         var nowThis = this
-        if ((/^1[3|4|5|7|8][0-9]{9}$/.test(this.tel))){
-          axios.post('http://192.168.1.10/gxw_mobile3/user/index/changephone?query={"user_id":' +'"'+ this.id_num+'"' + "," + '"tel":'  +'"'+ this.tel  +'"'+ "," +'"smscode":'  +'"'+ this.s_code +'"' + "}")
+        if ((/^1[3|4|5|7|8][0-9]{9}$/.test(this.tel))) {
+          axios.post('http://192.168.1.10/gxw_mobile3/user/index/changephone?query={"user_id":' + '"' + this.id_num + '"' + "," + '"tel":' + '"' + this.tel + '"' + "," + '"smscode":' + '"' + this.s_code + '"' + "}")
             .then(function (response) {
               if (response.data.result == true) {
                 this.write_tel_div = false
               } else {
                 nowThis.warminfo = true
-                nowThis.warmtext = "验证码错误!";
+                nowThis.warmtext = response.data.message
 
               }
             })
-        }else {
+        } else {
 
           nowThis.warminfo = true
           nowThis.warmtext = "请输入正确的手机号码!";
         }
-
-
 
 
       }
@@ -157,11 +166,11 @@
       }
 
       document.title = "新人专享页"
-      axios.get('http://192.168.1.10/gxw_mobile3/user/index/bonusList?query={"type":"2"}')
-      /* axios.get('/api/bonus_list')*/
-        .then(function (response) {
-          nowThis.bonus_list = response.data.bonus_list
-        })
+      /* axios.get('http://192.168.1.10/gxw_mobile3/user/index/bonusList?query={"type":"2"}')
+       /!* axios.get('/api/bonus_list')*!/
+       .then(function (response) {
+       nowThis.bonus_list = response.data.bonus_list
+       })*/
 
     }
   }

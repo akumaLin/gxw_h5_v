@@ -27,7 +27,7 @@
       <p class="p-title">
         我的奖品
       </p>
-      <a class="sort-more" @touchstart="toLottery">去抽奖></a>
+      <a class="sort-more" id="sort_more2"  @touchstart="toLottery">去抽奖></a>
       <my-real-prize :prize="prize"></my-real-prize>
     </div>
     <my-prize-five :coupon="coupon,timeout" @a_app="warm_app"></my-prize-five>
@@ -38,6 +38,20 @@
       <p style="text-align: center">请下载共享网app！</p>
       <div class="btn_bot">
         <div class="btn_14" style="border: none" @touchstart="alert_app=false">确定</div>
+      </div>
+    </div>
+       <transition name="fade">
+    <div class="Cover_all"  v-if="alert_5">
+       <div class="Cover"></div>
+       <div class="img"  :style="{background: 'url(' +alert_520+ ') no-repeat',backgroundSize:'100% 100%'}">
+         <div class="close"  @touchstart="alert_5=false"></div>
+       </div>
+    </div>
+       </transition>
+    <div class="Cover_all" v-if="alert_h">
+      <div class="Cover" ></div>
+      <div class="img"  :style="{background: 'url(' +alert_hec+ ') no-repeat',backgroundSize:'100% 100%'}">
+        <div class="close" @touchstart="alert_h=false"></div>
       </div>
     </div>
   </div>
@@ -54,7 +68,13 @@
     name: 'myPrize',
     data(){
       return {
+        alert_5:false,
+        alert_5_1:false,
+        alert_h_1:false,
+        alert_h:false,
         isApp:false,
+        alert_520:require("../../assets/images/520_alert.png"),
+        alert_hec:require("../../assets/images/hec_alert.png"),
         is_confirm:false,
         showRules: false,
         id_num:"",
@@ -65,7 +85,7 @@
           "word1_num": "0",
           "word2_num": "0",
           "word3_num": "0",
-          "word4_num": "0"
+          "word4_num": "0",
         },
         shareUser: [
           {
@@ -79,6 +99,7 @@
       }
     },
     created(){
+
       let my_href=window.location.href
       let url_index=my_href.lastIndexOf("&")
               if(url_index>-1){
@@ -87,7 +108,8 @@
                 let id_num=user_id.substring(id_num_index+1)
                 this.id_num=id_num
               }
-      console.log(this.id_num)
+     /* console.log(this.id_num)*/
+     console.log( this.wordNum)
       let nowThis = this
       axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":'+this.id_num+'}')
      /* axios.get('/api/prizes')*/
@@ -95,7 +117,23 @@
 
              if(response.data.result==false){
              }else {
-               nowThis.wordNum = response.data.list.wordNum;
+               nowThis.wordNum.word1_num=response.data.list.wordNum.word1_num
+               nowThis.wordNum.word2_num=response.data.list.wordNum.word2_num
+               nowThis.wordNum.word3_num=response.data.list.wordNum.word3_num
+               nowThis.wordNum.word4_num=response.data.list.wordNum.word4_num
+                    if(response.data.list.wordNum.word1_new==1){
+                      nowThis.alert_5_1=true
+                    }else {
+                      nowThis.alert_5_1=false
+                    }
+               if(response.data.list.wordNum.word2_new==1){
+                 nowThis.alert_h_1=true
+               }else {
+                 nowThis.alert_h_1=false
+               }
+
+
+
              }
 
           if(response.data.result==false){
@@ -147,6 +185,8 @@
         })
     },
     mounted(){
+      this.alert_5=this.alert_5_1
+      this.alert_h=this.alert_h_1
       const nowThis = this
       const obj = nowThis.$el
       if (nowThis.$route.params.top)
@@ -192,7 +232,7 @@
         if(window.O2OHome){
           O2OHome.gotoTabIndex ('0')
         }else {
-        window.location.href="cn/active_homepage.html "//去抽奖要跳转的绝对路径
+      /*  window.location.href="cn/active_homepage.html "//去抽奖要跳转的绝对路径*/
         }
       }
     }

@@ -10,7 +10,8 @@
 
       </slide>
     </carousel-3d>
-    <a class="j_card" @touchstart="getCard">去集卡></a>
+
+    <a class="j_card" id="j_card" @touchstart="getCard">去集卡></a>
   </div>
 
     <div class="my-price-two">
@@ -66,7 +67,7 @@ export default {
             if(window.O2OHome){
               O2OHome.gotoTabIndex ('1')
             }else {
-              window.location.href="cn/lovegift_card.html"//去集卡要跳转的绝对路径
+            /*  window.location.href="cn/lovegift_card.html"//去集卡要跳转的绝对路径*/
             }
     }
   }
