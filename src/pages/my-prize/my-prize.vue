@@ -4,11 +4,11 @@
     <my-prize-three :loveTitle="loveTitle"></my-prize-three>
     <div style="position:relative">
       <p class="p-title">我的积分卡</p>
-      <a  class="sort-more" @touchstart="toBuy">去购买></a>
+      <a class="sort-more" @touchstart="toBuy">去购买></a>
       <ul class="my-tb">
         <li>获取积分卡：<span v-text="pointCode>0?pointCode:0"></span>张</li>
         <li>
-          <button class="btn" v-if="pointCode >=10" @touchstart="isTrue" >兑换14卡</button>
+          <button class="btn" v-if="pointCode >=10" @touchstart="isTrue">兑换14卡</button>
         </li>
         <li>Tips：10张13卡可以兑换一张14卡，不含抽奖抽中的13卡</li>
       </ul>
@@ -18,8 +18,8 @@
     <div class="confirm_14" @touchmove.prevent v-if="is_confirm">
       <p>确定将10张13卡兑换成1张14卡了吗？换了就不能后悔咯！</p>
       <div class="btn_bot">
-      <div class="btn_14" @touchstart="make_confirm">确定兑换</div>
-      <div class="btn_14" @touchstart="is_confirm=false">我点错了</div>
+        <div class="btn_14" @touchstart="make_confirm">确定兑换</div>
+        <div class="btn_14" @touchstart="is_confirm=false">我点错了</div>
       </div>
     </div>
     <my-prize-four :shareUser="shareUser" @a_app="warm_app"></my-prize-four>
@@ -27,11 +27,11 @@
       <p class="p-title">
         我的奖品
       </p>
-      <a class="sort-more" id="sort_more2"  @touchstart="toLottery">去抽奖></a>
+      <a class="sort-more" id="sort_more2" @touchstart="toLottery">去抽奖></a>
       <my-real-prize :prize="prize"></my-real-prize>
     </div>
     <my-prize-five :coupon="coupon,timeout" @a_app="warm_app"></my-prize-five>
-  <!--  <alert_app></alert_app>-->
+    <!--  <alert_app></alert_app>-->
     <div class="confirm_z" @touchmove.prevent v-if="alert_app">
     </div>
     <div class="confirm_14" @touchmove.prevent v-if="alert_app">
@@ -40,21 +40,27 @@
         <div class="btn_14" style="border: none" @touchstart="alert_app=false">确定</div>
       </div>
     </div>
-       <transition name="fade">
-    <div class="Cover_all"  v-if="alert_5">
-       <div class="Cover"></div>
-       <div class="img"  :style="{background: 'url(' +alert_520+ ') no-repeat',backgroundSize:'100% 100%'}">
-         <div class="close"  @touchstart="alert_5=false"></div>
-       </div>
-    </div>
-       </transition>
-    <div class="Cover_all" v-if="alert_h">
-      <div class="Cover" ></div>
-      <div class="img"  :style="{background: 'url(' +alert_hec+ ') no-repeat',backgroundSize:'100% 100%'}">
-        <div class="close" @touchstart="alert_h=false"></div>
+    <transition name="fade">
+      <div class="Cover_all" v-if="alert_5">
+        <div class="Cover"></div>
+        <div class="img" :style="{background: 'url(' +alert_520+ ') no-repeat',backgroundSize:'100% 100%'}">
+          <div class="close" @touchstart="alert_5=false"></div>
+        </div>
       </div>
-    </div>
+    </transition>
+    <transition name="fade">
+      <div class="Cover_all" v-if="alert_h">
+        <div class="Cover"></div>
+        <div class="img" :style="{background: 'url(' +alert_hec+ ') no-repeat',backgroundSize:'100% 100%'}">
+          <div class="close" @touchstart="alert_h=false"></div>
+        </div>
+      </div>
+    </transition>
+    <transition name="fade">
+      <div class="d_success" v-if="d_success">兑换成功</div>
+    </transition>
   </div>
+
 </template>
 <script type="text/ecmascript-6">
   import axios from 'axios';
@@ -63,22 +69,23 @@
   import myPrizeFour from "@/components/my-prize-people/my-prize-four.vue"
   import myPrizeFive from "@/components/my-prize-coupon/my-prize-five.vue"
   import myRealPrize from "@/components/my-real-prize/my-real-prize.vue"
-/*  import alert_app from "@/components/alert_app/alert_app.vue"*/
+  /*  import alert_app from "@/components/alert_app/alert_app.vue"*/
   export default {
     name: 'myPrize',
     data(){
       return {
-        alert_5:false,
-        alert_5_1:false,
-        alert_h_1:false,
-        alert_h:false,
-        isApp:false,
-        alert_520:require("../../assets/images/520_alert.png"),
-        alert_hec:require("../../assets/images/hec_alert.png"),
-        is_confirm:false,
+        d_success: false,
+        alert_5: false,
+        alert_5_1: false,
+        alert_h_1: false,
+        alert_h: false,
+        isApp: false,
+        alert_520: require("../../assets/images/520_alert.png"),
+        alert_hec: require("../../assets/images/hec_alert.png"),
+        is_confirm: false,
         showRules: false,
-        id_num:"",
-        alert_app:false,
+        id_num: "0",
+        alert_app: false,
         pointCode: {},
         loveTitle: {},
         wordNum: {
@@ -100,75 +107,47 @@
     },
     created(){
 
-      let my_href=window.location.href
-      let url_index=my_href.lastIndexOf("&")
-              if(url_index>-1){
-                let user_id=my_href.substring(url_index+1)
-                let id_num_index=user_id.lastIndexOf("=")
-                let id_num=user_id.substring(id_num_index+1)
-                this.id_num=id_num
-              }
-     /* console.log(this.id_num)*/
-     console.log( this.wordNum)
+      let my_href = window.location.href
+      let url_index = my_href.lastIndexOf("&")
+      if (url_index > -1) {
+        let user_id = my_href.substring(url_index + 1)
+        let id_num_index = user_id.lastIndexOf("=")
+        let id_num = user_id.substring(id_num_index + 1)
+        this.id_num = id_num
+      }
+      /* console.log(this.id_num)*/
+      console.log(this.wordNum)
       let nowThis = this
-      axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":'+this.id_num+'}')
-     /* axios.get('/api/prizes')*/
+      axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":' + this.id_num + '}')
+      /* axios.get('/api/prizes')*/
         .then(function (response) {
 
-             if(response.data.result==false){
-             }else {
-               nowThis.wordNum.word1_num=response.data.list.wordNum.word1_num
-               nowThis.wordNum.word2_num=response.data.list.wordNum.word2_num
-               nowThis.wordNum.word3_num=response.data.list.wordNum.word3_num
-               nowThis.wordNum.word4_num=response.data.list.wordNum.word4_num
-                    if(response.data.list.wordNum.word1_new==1){
-                      nowThis.alert_5_1=true
-                    }else {
-                      nowThis.alert_5_1=false
-                    }
-               if(response.data.list.wordNum.word2_new==1){
-                 nowThis.alert_h_1=true
-               }else {
-                 nowThis.alert_h_1=false
-               }
-
-
-
-             }
-
-          if(response.data.result==false){
-
-          }else {
+          if (response.data.result == false) {
+          } else {
+            nowThis.wordNum.word1_num = response.data.list.wordNum.word1_num
+            nowThis.wordNum.word2_num = response.data.list.wordNum.word2_num
+            nowThis.wordNum.word3_num = response.data.list.wordNum.word3_num
+            nowThis.wordNum.word4_num = response.data.list.wordNum.word4_num
+            if (response.data.list.wordNum.word1_new == 1) {
+              nowThis.alert_5_1 = true
+            } else {
+              nowThis.alert_5_1 = false
+            }
+            if (response.data.list.wordNum.word4_new == 1) {
+              nowThis.alert_h_1 = true
+            } else {
+              nowThis.alert_h_1 = false
+            }
             nowThis.pointCode = response.data.list.pointCode.pointNum
-          }
-
-          if(response.data.result==false){
-
-          }else {
             if (response.data.list.loveTitle.love_id != 0) {
               nowThis.loveTitle = response.data.list.loveTitle
             }
-          }
-          if(response.data.result==false){
-
-          }else {
             if (response.data.list.shareUser.length > 0) {
               nowThis.shareUser = response.data.list.shareUser;
             }
-          }
-
-          if(response.data.result==false){
-
-          }else {
             if (response.data.list.prize.length > 0) {
               nowThis.prize = response.data.list.prize;
-
             }
-          }
-
-          if(response.data.result==false){
-
-          }else {
             nowThis.coupon = response.data.list.coupon
           }
 
@@ -185,54 +164,70 @@
         })
     },
     mounted(){
-      this.alert_5=this.alert_5_1
-      this.alert_h=this.alert_h_1
+      this.alert_5 = this.alert_5_1
+      this.alert_h = this.alert_h_1
       const nowThis = this
       const obj = nowThis.$el
       if (nowThis.$route.params.top)
         obj.parentNode.scrollTop = (obj.offsetHeight - obj.parentNode.offsetHeight);
     },
-    methods:{
+    methods: {
       make_confirm(){
-
-        axios.post('http://192.168.1.21/gxw_mobile3/shop/love/exchangeword?query={"user_id":'+this.id_num+"}")
-          .then(function (response){
-               console.log(response.data.result)
-            if(response.data.result==true){
-              axios.post('http://192.168.1.21/gxw_mobile3/shop/love/exchangeword?query={"user_id":'+this.id_num+"}")
-                .then(function (response) {
-                  this.wordNum = response.data.list.wordNum;
-                })
+        var now_this = this
+        axios.post('http://192.168.1.25/gxw_mobile3/shop/love/exchangeword?query={"user_id":' + now_this.id_num + "}")
+          .then(function (response) {
+            if (response.data.result == true) {
+              axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":' + now_this.id_num + "}").then(function (res) {
+                now_this.wordNum.word1_num = res.data.list.wordNum.word1_num
+                now_this.wordNum.word2_num = res.data.list.wordNum.word2_num
+                now_this.wordNum.word3_num = res.data.list.wordNum.word3_num
+                now_this.wordNum.word4_num = res.data.list.wordNum.word4_num
+                now_this.pointCode = res.data.list.pointCode.pointNum
+                if (res.data.list.wordNum.word1_new == 1) {
+                  now_this.alert_5 = true
+                } else {
+                  now_this.alert_5 = false
+                }
+                if (res.data.list.wordNum.word4_new == 1) {
+                  now_this.alert_h = true
+                } else {
+                  now_this.alert_h = false
+                }
+                now_this.is_confirm = false
+                now_this.d_success = true
+                setTimeout(function () {
+                  now_this.d_success = false
+                }, 3000)
+              })
             }
           })
 
 
-
       },
       warm_app(val){
-          this.alert_app=val
+        this.alert_app = val
       }
-     ,
+      ,
       isTrue(){
-      this.is_confirm=true
+        this.is_confirm = true
       },
-     toBuy(){
-        if(window.O2OHome){
-            if(this.id_num==null){
-              O2OHome.isLogin()
-            }else {
-              O2OHome.buyVipCard();
-            }
+      toBuy(){
+        if (window.O2OHome) {
+          if (this.id_num <10) {
+            O2OHome.isLogin()
+          } else {
+            O2OHome.buyVipCard();
+          }
 
-        }else {
-        window.location.href="https://www.gxw520.com/mobile/index.php?r=user/index/buy"//去购买要跳转的绝对路径
+        } else {
+          window.location.href = "https://www.gxw520.com/mobile/index.php?r=user/index/buy"//去购买要跳转的绝对路径
         }
       },
       toLottery(){
-        if(window.O2OHome){
-          O2OHome.gotoTabIndex ('0')
-        }else {
-      /*  window.location.href="cn/active_homepage.html "//去抽奖要跳转的绝对路径*/
+        if (window.O2OHome) {
+          O2OHome.gotoTabIndex('0')
+        } else {
+          /*  window.location.href="cn/active_homepage.html "//去抽奖要跳转的绝对路径*/
         }
       }
     }
@@ -243,14 +238,15 @@
       myPrizeFour,
       myPrizeFive,
       myRealPrize,
-     /* alert_app*/
+      /* alert_app*/
     }
   }
 
 </script>
 <style lang="scss">
   @import 'my-prize.scss';
-  .top_tab{
+
+  .top_tab {
     z-index: 9999;
   }
 </style>

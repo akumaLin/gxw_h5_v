@@ -168,3 +168,19 @@ white-space: nowrap;
   transition: all 1.5s
 
 }
+.d_success{
+  width: 60vw;
+  height: 20vw;
+  border-radius: 10vw;
+  line-height: 20vw;
+  text-align: center;
+  color:  #e32c2c;
+  border: 0.1px solid #e32c2c;
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: ghostwhite;
+}
