@@ -98,6 +98,20 @@
       }
     },
     methods: {
+      getCookie:function(GXW_user_id){
+        if (document.cookie.length>0)
+        {
+          var c_start=document.cookie.indexOf(GXW_user_id + "=")
+          if (c_start!=-1)
+          {
+            c_start=c_start + c_name.length+1
+            var c_end=document.cookie.indexOf(";",c_start)
+            if (c_end==-1) c_end=document.cookie.length
+            return unescape(document.cookie.substring(c_start,c_end))
+          }
+        }
+        return null
+      },
       getCode(){
         if (this.checke == true) {
           if ((/^1[3|4|5|7|8|6][0-9]{9}$/.test(this.tel))) {
@@ -126,9 +140,6 @@
       },
 
       rightCode(){
-        console.log(this.id_num)
-        console.log(this.tel)
-        console.log(this.s_code)
         var nowThis = this
         if ((/^1[3|4|5|7|8][0-9]{9}$/.test(this.tel))) {
           axios.post('http://192.168.1.10/gxw_mobile3/user/index/changephone?query={"user_id":' + '"' + this.id_num + '"' + "," + '"tel":' + '"' + this.tel + '"' + "," + '"smscode":' + '"' + this.s_code + '"' + "}")
@@ -155,14 +166,13 @@
       let nowThis = this
       let my_href = window.location.href
       let url_index = my_href.lastIndexOf("&")
-      if (url_index == -1) {
-        nowThis.id_num = 0
-      } else {
+      if (url_index > -1) {
         let user_id = my_href.substring(url_index + 1)
         let id_num_index = user_id.lastIndexOf("=")
         let id_num = user_id.substring(id_num_index + 1)
         nowThis.id_num = id_num
-        console.log(nowThis.id_num)
+      } else {
+        this.id_num=getCookie(GXW_user_id)
       }
 
       document.title = "新人专享页"

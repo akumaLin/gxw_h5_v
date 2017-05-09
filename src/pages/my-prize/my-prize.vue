@@ -85,7 +85,7 @@
         alert_hec: require("../../assets/images/hec_alert.png"),
         is_confirm: false,
         showRules: false,
-        id_num: "0",
+        id_num: 0,
         alert_app: false,
         pointCode: {},
         loveTitle: {},
@@ -115,54 +115,59 @@
         let id_num_index = user_id.lastIndexOf("=")
         let id_num = user_id.substring(id_num_index + 1)
         this.id_num = id_num
+      }else {
+
+        this.id_num=getCookie(GXW_user_id)
+
       }
-      /* console.log(this.id_num)*/
-      console.log(this.wordNum)
-      let nowThis = this
-      axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":' + this.id_num + '}')
-      /* axios.get('/api/prizes')*/
-        .then(function (response) {
+            if(this.id_num!=0){
+              let nowThis = this
+              axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":' + this.id_num + '}')
+              /* axios.get('/api/prizes')*/
+                .then(function (response) {
 
-          if (response.data.result == false) {
-          } else {
-            nowThis.wordNum.word1_num = response.data.list.wordNum.word1_num
-            nowThis.wordNum.word2_num = response.data.list.wordNum.word2_num
-            nowThis.wordNum.word3_num = response.data.list.wordNum.word3_num
-            nowThis.wordNum.word4_num = response.data.list.wordNum.word4_num
-            if (response.data.list.wordNum.word1_new == 1) {
-              nowThis.alert_5_1 = true
-            } else {
-              nowThis.alert_5_1 = false
-            }
-            if (response.data.list.wordNum.word4_new == 1) {
-              nowThis.alert_h_1 = true
-            } else {
-              nowThis.alert_h_1 = false
-            }
-            nowThis.pointCode = response.data.list.pointCode.pointNum
-            if (response.data.list.loveTitle.love_id != 0) {
-              nowThis.loveTitle = response.data.list.loveTitle
-            }
-            if (response.data.list.shareUser.length > 0) {
-              nowThis.shareUser = response.data.list.shareUser;
-            }
-            if (response.data.list.prize.length > 0) {
-              nowThis.prize = response.data.list.prize;
-            }
-            nowThis.coupon = response.data.list.coupon
-          }
+                  if (response.data.result == false) {
+                  } else {
+                    nowThis.wordNum.word1_num = response.data.list.wordNum.word1_num
+                    nowThis.wordNum.word2_num = response.data.list.wordNum.word2_num
+                    nowThis.wordNum.word3_num = response.data.list.wordNum.word3_num
+                    nowThis.wordNum.word4_num = response.data.list.wordNum.word4_num
+                    if (response.data.list.wordNum.word1_new == 1) {
+                      nowThis.alert_5_1 = true
+                    } else {
+                      nowThis.alert_5_1 = false
+                    }
+                    if (response.data.list.wordNum.word4_new == 1) {
+                      nowThis.alert_h_1 = true
+                    } else {
+                      nowThis.alert_h_1 = false
+                    }
+                    nowThis.pointCode = response.data.list.pointCode.pointNum
+                    if (response.data.list.loveTitle.love_id != 0) {
+                      nowThis.loveTitle = response.data.list.loveTitle
+                    }
+                    if (response.data.list.shareUser.length > 0) {
+                      nowThis.shareUser = response.data.list.shareUser;
+                    }
+                    if (response.data.list.prize.length > 0) {
+                      nowThis.prize = response.data.list.prize;
+                    }
+                    nowThis.coupon = response.data.list.coupon
+                  }
 
-          let timestamp = Date.parse(new Date());
-          timestamp = timestamp / 1000;
-          for (let i = 0; i < nowThis.coupon.length; i++) {
-            var endtime = nowThis.coupon[i].use_end_date;
-            endtime = endtime.replace(/\-/g, "/");
-            endtime = Date.parse(endtime);
-            endtime = endtime / 1000;
-            let boolean = (timestamp < endtime)
-            nowThis.timeout.push(boolean)
-          }
-        })
+                  let timestamp = Date.parse(new Date());
+                  timestamp = timestamp / 1000;
+                  for (let i = 0; i < nowThis.coupon.length; i++) {
+                    var endtime = nowThis.coupon[i].use_end_date;
+                    endtime = endtime.replace(/\-/g, "/");
+                    endtime = Date.parse(endtime);
+                    endtime = endtime / 1000;
+                    let boolean = (timestamp < endtime)
+                    nowThis.timeout.push(boolean)
+                  }
+                })
+            }
+
     },
     mounted(){
       this.alert_5 = this.alert_5_1
@@ -173,6 +178,20 @@
         obj.parentNode.scrollTop = (obj.offsetHeight - obj.parentNode.offsetHeight);
     },
     methods: {
+      getCookie:function(GXW_user_id){
+        if (document.cookie.length>0)
+        {
+          var c_start=document.cookie.indexOf(GXW_user_id + "=")
+          if (c_start!=-1)
+          {
+            c_start=c_start + c_name.length+1
+            var c_end=document.cookie.indexOf(";",c_start)
+            if (c_end==-1) c_end=document.cookie.length
+            return unescape(document.cookie.substring(c_start,c_end))
+          }
+        }
+        return null
+      },
       make_confirm(){
         var now_this = this
         axios.post('http://192.168.1.25/gxw_mobile3/shop/love/exchangeword?query={"user_id":' + now_this.id_num + "}")
