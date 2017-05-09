@@ -57,7 +57,7 @@
       </div>
     </transition>
     <transition name="fade">
-      <div class="d_success" v-if="d_success">兑换成功</div>
+      <div class="d_success" v-if="d_success" v-text="d_success_info"></div>
     </transition>
   </div>
 
@@ -75,6 +75,7 @@
     data(){
       return {
         d_success: false,
+        d_success_info: "兑换成功",
         alert_5: false,
         alert_5_1: false,
         alert_h_1: false,
@@ -199,6 +200,13 @@
                   now_this.d_success = false
                 }, 3000)
               })
+            }else {
+              now_this.is_confirm = false
+              now_this.d_success_info ="账号异常，兑换失败"
+              now_this.d_success = true
+              setTimeout(function () {
+                now_this.d_success = false
+              }, 3000)
             }
           })
 
