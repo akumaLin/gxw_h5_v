@@ -117,7 +117,8 @@
         this.id_num = id_num
       }else {
 
-        this.id_num=getCookie(GXW_user_id)
+        this.id_num=this.getCookie("GXW_user_id")
+        console.log(this.id_num)
 
       }
             if(this.id_num!=0){
@@ -184,7 +185,7 @@
           var c_start=document.cookie.indexOf(GXW_user_id + "=")
           if (c_start!=-1)
           {
-            c_start=c_start + c_name.length+1
+            c_start=c_start + GXW_user_id.length+1
             var c_end=document.cookie.indexOf(";",c_start)
             if (c_end==-1) c_end=document.cookie.length
             return unescape(document.cookie.substring(c_start,c_end))
@@ -240,7 +241,7 @@
       },
       toBuy(){
         if (window.O2OHome) {
-          if (this.id_num <10) {
+          if (this.id_num ==0) {
             O2OHome.isLogin()
           } else {
             O2OHome.buyVipCard();

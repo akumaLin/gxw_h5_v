@@ -3,7 +3,7 @@
     <ul class="coupon">
       <li v-for="item in bonus_list">
         <div class="coupon_img" :style="{background: 'url(' +coupon_img_bg+ ') no-repeat',backgroundSize:'100% 100%'}">
-          <p style="color: white">¥ <span class="monney">{{item.type_money|int_f}}</span></p>
+          <p style="color: white">¥ <span class="monney">{{item.type_money}}</span></p>
           <p>全品类</p>
           <p> {{item.type_name}}</p>
         </div>
@@ -172,7 +172,7 @@
         let id_num = user_id.substring(id_num_index + 1)
         nowThis.id_num = id_num
       } else {
-        this.id_num=getCookie(GXW_user_id)
+        this.id_num=this.getCookie("GXW_user_id")
       }
 
       document.title = "新人专享页"

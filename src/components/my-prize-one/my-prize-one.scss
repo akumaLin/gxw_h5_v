@@ -56,12 +56,12 @@
   background: rgba(0,0,0,0.60);
   position: fixed;
   top:0;
-  left:0;
-  z-index: 999;
+  transform: translateY(0);
+  z-index: 99;
 }
 .img{
   width: 90.1vw;
-  height: 90vh;
+  height: 70vh;
   overflow: scroll;
   position: fixed;
   top:0;
@@ -76,7 +76,7 @@
 }
 .img_margin{
   width: 90.1vw;
-  height: 90vh;
+  height: 70vh;
   overflow: scroll;
   position: fixed;
   background: white;

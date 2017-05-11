@@ -20,10 +20,10 @@
         <span class="card-badge" v-if="value!=0">x{{value}}</span>
       </div>
     </div>
-    <div class="Pop-ups"  v-show="showRules" @touchmove.self.prevent>
+    <div class="Pop-ups"  v-show="showRules" @touchstart.prevent>
       <div class="img" >
         <div class="img_margin">
-        <div  class="img_rules" :style="{background: 'url(' +my_prize_one_rules+ ') no-repeat',backgroundSize:'100% 100%'}">
+        <div  class="img_rules" @touchstart.self.stop  :style="{background: 'url(' +my_prize_one_rules+ ') no-repeat',backgroundSize:'100% 100%'}">
           <div class="close_x" @touchstart="showRules=false"></div>
         </div>
         </div>
@@ -60,6 +60,12 @@ export default {
     Slide
   },
   methods:{
+    /*move_img(e){
+     /!* document.get.ontouchmove=function(e){
+        e.preventDefault();
+      }*!/
+      e.stopPropagation();
+    },*/
     onSlideChange:function(index){
       this.showcolor=index;
       },

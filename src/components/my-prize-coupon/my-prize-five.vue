@@ -6,7 +6,8 @@
     <span class="sort-more" v-if="coupon.length>0" @touchstart="moreCoupon">更多></span>
     <span class="sort-more" v-if="coupon.length<=0" id="getCoupon" @touchstart="getCoupon">去领取></span>
     <div class="coupon " v-for="(item,index) in coupon" v-if="coupon.length>0" :style="{background: 'url(' + yhj_bg+ ') no-repeat',backgroundSize:'100% 100%'}">
-      <div class="money">
+   <!-- <div class="coupon " v-for="item in 5"  :style="{background: 'url(' + yhj_bg+ ') no-repeat',backgroundSize:'100% 100%'}">-->
+    <div class="money">
         ¥<span>{{item.type_money|int_f}}</span>
       </div>
       <div class="m-text">
@@ -14,8 +15,9 @@
           <p>满{{item.min_goods_amount|int_f}}可用</p>
         <p>有效期：{{item.use_start_date|time_f}}-{{item.use_end_date|time_f}} </p>
       </div>
-      <span class="use  now_use" id="now_use" v-if="timeout[index]&&(item.order_id==0)"  @touchstart="useCoupon">立即使用</span>
-      <div class="coupon_icon" v-if="(!timeout[index])&&(item.order_id==0)" :class="[{gone:item.order_id>0},{already:((!timeout[index])&&(item.order_id==0))}]"></div>
+      <span class="use  now_use"  v-if="timeout[index]&&(item.order_id==0)"  @touchstart="useCoupon">立即使用</span>
+     <!-- <span class="use  now_use"   @touchstart="useCoupon">立即使用</span>-->
+      <div class="coupon_icon"  :class="[{gone:item.order_id>0},{already:((!timeout[index])&&(item.order_id==0))}]"></div>
     </div>
     <div class="coupon no_things" v-if="coupon.length<=0">
       没有优惠券，快去领取吧！
