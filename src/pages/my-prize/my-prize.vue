@@ -116,12 +116,13 @@
         let id_num = user_id.substring(id_num_index + 1)
         this.id_num = id_num
       }else {
-
         this.id_num=this.getCookie("GXW_user_id")
-        console.log(this.id_num)
-
       }
-            if(this.id_num!=0){
+      if(this.id_num==null ||this.id_num==0){
+        if (window.O2OHome){
+          O2OHome.isLogin()
+        }
+      }else{
               let nowThis = this
               axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":' + this.id_num + '}')
               /* axios.get('/api/prizes')*/
