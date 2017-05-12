@@ -8,10 +8,10 @@
     <div class="coupon " v-for="(item,index) in coupon" v-if="coupon.length>0" :style="{background: 'url(' + yhj_bg+ ') no-repeat',backgroundSize:'100% 100%'}">
    <!-- <div class="coupon " v-for="item in 5"  :style="{background: 'url(' + yhj_bg+ ') no-repeat',backgroundSize:'100% 100%'}">-->
     <div class="money">
-        ¥<span>{{item.type_money|int_f}}</span>
+        ¥<span>{{item.type_money}}</span>
       </div>
       <div class="m-text">
-        <p style="color: #000000">{{item.cate}}</p>
+        <p style="color: #000000">{{item.type_name}}</p>
           <p>满{{item.min_goods_amount|int_f}}可用</p>
         <p>有效期：{{item.use_start_date|time_f}}-{{item.use_end_date|time_f}} </p>
       </div>

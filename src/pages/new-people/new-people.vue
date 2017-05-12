@@ -144,8 +144,10 @@
         if ((/^1[3|4|5|7|8][0-9]{9}$/.test(this.tel))) {
           axios.post('http://192.168.1.10/gxw_mobile3/user/index/changephone?query={"userid":' + '"' + this.id_num + '"' + "," + '"tel":' + '"' + this.tel + '"' + "," + '"smscode":' + '"' + this.s_code + '"' + "}")
             .then(function (response) {
-              if (response.data.result == true) {
-                this.write_tel_div = false
+              if (response.data.result==true) {
+                if (window.O2OHome){
+                  O2OHome.shopMall()
+                }
               } else {
                 nowThis.warminfo = true
                 nowThis.warmtext = response.data.message

@@ -93,8 +93,8 @@
           "word1_num": "0",
           "word2_num": "0",
           "word3_num": "0",
-          "word4_num": "0",
         },
+        f_wordNum:true,
         shareUser: [
           {
             "avatar": "",
@@ -200,10 +200,18 @@
           .then(function (response) {
             if (response.data.result == true) {
               axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":' + now_this.id_num + "}").then(function (res) {
-                now_this.wordNum.word1_num = res.data.list.wordNum.word1_num
-                now_this.wordNum.word2_num = res.data.list.wordNum.word2_num
-                now_this.wordNum.word3_num = res.data.list.wordNum.word3_num
-                now_this.wordNum.word4_num = res.data.list.wordNum.word4_num
+
+                              if(res.data.list.wordNum.word4_num!=0){
+                                now_this.wordNum.word1_num = res.data.list.wordNum.word1_num
+                                now_this.wordNum.word2_num = res.data.list.wordNum.word2_num
+                                now_this.wordNum.word3_num = res.data.list.wordNum.word3_num
+                                now_this.wordNum.word4_num = res.data.list.wordNum.word4_num
+                              }else{
+                                now_this.wordNum.word1_num = res.data.list.wordNum.word1_num
+                                now_this.wordNum.word2_num = res.data.list.wordNum.word2_num
+                                now_this.wordNum.word3_num = res.data.list.wordNum.word3_num
+                              }
+
                 now_this.pointCode = res.data.list.pointCode.pointNum
                 if (res.data.list.wordNum.word1_new == 1) {
                   now_this.alert_5 = true

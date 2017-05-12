@@ -19,6 +19,9 @@
         <img :src="value==0?slides[index].img_1:slides[index].img" alt="" width="100%"height="100%">
         <span class="card-badge" v-if="value!=0">x{{value}}</span>
       </div>
+      <div class="s-card" v-if="">
+        <img :src="slides[3].img_1" alt="" width="100%"height="100%">
+      </div>
     </div>
     <div class="Pop-ups"  v-show="showRules" @touchstart.prevent>
       <div class="img" >
