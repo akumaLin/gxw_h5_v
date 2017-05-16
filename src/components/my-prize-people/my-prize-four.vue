@@ -16,18 +16,24 @@
 
     export default {
         name: 'myPrizeFour',
-        props:["shareUser"],
+        props:["shareUser","app_num_index"],
        methods:{
             more(){
               if(window.O2OHome){
                 O2OHome.myRequest ()
               }else {
-                window.location.href="http://192.168.1.10/gxw520/mobile/index.php?r=user"//更多邀请要跳转的绝对路径
+                top.location.href=this.hostUrl+"mobile/index.php?r=user"//更多邀请要跳转的绝对路径
               }
             },
             toShare(){
+              console.log()
               if(window.O2OHome){
-                O2OHome.share(["","",""])
+                  if(this.app_num_index==2){
+                    O2OHome.share([this.hostUrl+"/love/images/520.a2822b5.png",this.hostUrl+"/love/cn/active_homepage.html?code=638806","赶快加入我们活动吧"])
+                  }else {
+                    O2OHome.share(this.hostUrl+"/love/images/520.a2822b5.png",this.hostUrl+"/love/cn/active_homepage.html?code=638806","赶快加入我们活动吧")
+                  }
+
               }else {
                /* window.location.href="http://www.baidu.com"//去分享要跳转的绝对路径*/
                 this.$emit('a_app', true);

@@ -39,7 +39,7 @@
              if(window.O2OHome){
                O2OHome.gotoTabIndex ('2')
              }else {
-             /*  window.location.href="cn/forlove_participate.html"//查看排行要跳转的绝对路径*/
+               top.location.href="cn/forlove_participate.html"//查看排行要跳转的绝对路径
              }
            }
          }

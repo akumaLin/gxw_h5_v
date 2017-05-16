@@ -7,7 +7,6 @@
     <span class="rules" @touchstart="showRules=true">查看规则</span>
     <carousel-3d ref="carousel"  :minSwipeDistance="2" :animationSpeed="400" :onSlideChange="onSlideChange" :inverse-scaling="1500"  :height="260" :width="244.4" :space="450" >
       <slide  v-for="(slide, i) in slides"  :index="i" :key="i" style="background-size: 100% 100%" :style="{backgroundImage: 'url(' + slide.img + ')'}">
-
       </slide>
     </carousel-3d>
 
@@ -15,14 +14,11 @@
   </div>
 
     <div class="my-price-two">
-      <div class="s-card" v-for="(value, key, index) in wordNum" @click="$refs.carousel.goSlide(index);showcolor=index" :class="{'red-border':showcolor===index}" >
-        <img :src="value==0?slides[index].img_1:slides[index].img" alt="" width="100%"height="100%">
-        <span class="card-badge" v-if="value!=0">x{{value}}</span>
-      </div>
-      <div class="s-card" v-if="">
-        <img :src="slides[3].img_1" alt="" width="100%"height="100%">
-      </div>
+    <div class="s-card" v-for="(value, key, index) in wordNum" @click="$refs.carousel.goSlide(index);showcolor=index" :class="{'red-border':showcolor===index}" >
+      <img :src="value==0?slides[index].img_1:slides[index].img" alt="" width="100%"height="100%">
+      <span class="card-badge" v-if="value!=0">x{{value}}</span>
     </div>
+  </div>
     <div class="Pop-ups"  v-show="showRules" @touchstart.prevent>
       <div class="img" >
         <div class="img_margin">
@@ -40,7 +36,8 @@
 export default {
   name: 'myPrizeOne',
   props:[
-    "wordNum"
+    "wordNum",
+    "four_card"
   ],
   data () {
     return {
@@ -48,11 +45,12 @@ export default {
       my_prize_one_rules:require("../../assets/images/activeRu.png"),
       showRules:false,
       showcolor:0,
+      slide_3:{img_1:require("../../assets/images/hec_gray.png")},
       slides:[
           {img:require("../../assets/images/520.png"),img_1:require("../../assets/images/520_gray.png")},
           {img:require("../../assets/images/13.png"),img_1:require("../../assets/images/13_gray@2x.png")},
           {img:require("../../assets/images/14.png"),img_1:require("../../assets/images/14_gray.png")},
-          {img:require("../../assets/images/hec.png"),img_1:require("../../assets/images/hec_gray.png")}
+        {img:require("../../assets/images/hec.png"),img_1:require("../../assets/images/hec_gray.png")}
        ]
 
       }
@@ -76,7 +74,7 @@ export default {
             if(window.O2OHome){
               O2OHome.gotoTabIndex ('1')
             }else {
-            /*  window.location.href="cn/lovegift_card.html"//去集卡要跳转的绝对路径*/
+              top.location.href="cn/lovegift_card.html"//去集卡要跳转的绝对路径
             }
     }
   }

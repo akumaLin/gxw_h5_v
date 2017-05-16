@@ -9,6 +9,19 @@ Vue.component(Navbar.name, Navbar);
 Vue.component(TabItem.name, TabItem);
 Vue.config.productionTip = false
 /* eslint-disable no-new */
+
+Vue.prototype.hostUrl = (function () {
+  var is_product = document.domain == 'm.gxw520.com';
+  var hostUrl = is_product ? 'https://m.gxw520.com/' : 'http://192.168.1.10/gxw_mobile3/';
+  return hostUrl
+})()
+Vue.prototype.gxwloginUrl = (function () {
+  var is_product = document.domain == 'm.gxw520.com';
+  var gxwloginUrl = is_product ? 'https://www.gxw520.com/' : 'http://192.168.1.10/gxw520/';
+  return gxwloginUrl
+})()
+
+
 new Vue({
   el: '#app',
   router,

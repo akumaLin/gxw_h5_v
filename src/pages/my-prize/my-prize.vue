@@ -1,6 +1,6 @@
 <template>
   <div class="my-prize" id="my-prize" :class="{margin_top:isApp}">
-    <my-prize-one :wordNum="wordNum"></my-prize-one>
+    <my-prize-one :wordNum="wordNum" :four_card="four_card"></my-prize-one>
     <my-prize-three :loveTitle="loveTitle"></my-prize-three>
     <div style="position:relative">
       <p class="p-title">我的积分卡</p>
@@ -22,7 +22,7 @@
         <div class="btn_14" @touchstart="is_confirm=false">我点错了</div>
       </div>
     </div>
-    <my-prize-four :shareUser="shareUser" @a_app="warm_app"></my-prize-four>
+    <my-prize-four :app_num_index="app_num_index" :shareUser="shareUser" @a_app="warm_app"></my-prize-four>
     <div style="position:relative">
       <p class="p-title">
         我的奖品
@@ -32,14 +32,11 @@
     </div>
     <my-prize-five :coupon="coupon,timeout" @a_app="warm_app"></my-prize-five>
     <!--  <alert_app></alert_app>-->
-    <div class="confirm_z" @touchmove.prevent v-if="alert_app">
+     <transition name="fade">
+    <div class="confirm_14 confirm_17" @touchmove.prevent v-if="alert_app">
+      <p style="text-align: center" class="confirm_17" >请下载共享网app！</p>
     </div>
-    <div class="confirm_14" @touchmove.prevent v-if="alert_app">
-      <p style="text-align: center">请下载共享网app！</p>
-      <div class="btn_bot">
-        <div class="btn_14" style="border: none" @touchstart="alert_app=false">确定</div>
-      </div>
-    </div>
+     </transition>
     <transition name="fade">
       <div class="Cover_all" v-if="alert_5">
         <div class="Cover"></div>
@@ -89,10 +86,13 @@
         alert_app: false,
         pointCode: {},
         loveTitle: {},
+        app_num_index:"",
+        four_card:false,
         wordNum: {
           "word1_num": "0",
           "word2_num": "0",
           "word3_num": "0",
+          "word4_num": "0",
         },
         f_wordNum:true,
         shareUser: [
@@ -110,6 +110,13 @@
 
       let my_href = window.location.href
       let url_index = my_href.lastIndexOf("&")
+      let app_num = my_href.indexOf("=")
+               if(app_num>-1){
+                 var app_num_index = my_href.substr(app_num + 1,1)
+                 this.app_num_index=app_num_index
+               }
+
+
       if (url_index > -1) {
         let user_id = my_href.substring(url_index + 1)
         let id_num_index = user_id.lastIndexOf("=")
@@ -124,7 +131,7 @@
         }
       }else{
               let nowThis = this
-              axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":' + this.id_num + '}')
+              axios.get(nowThis.hostUrl+'/Shop/Loves/homeIndex?query={"user_id":' + this.id_num + '}')
               /* axios.get('/api/prizes')*/
                 .then(function (response) {
 
@@ -133,7 +140,9 @@
                     nowThis.wordNum.word1_num = response.data.list.wordNum.word1_num
                     nowThis.wordNum.word2_num = response.data.list.wordNum.word2_num
                     nowThis.wordNum.word3_num = response.data.list.wordNum.word3_num
-                    nowThis.wordNum.word4_num = response.data.list.wordNum.word4_num
+
+                                nowThis.wordNum.word4_num = response.data.list.wordNum.word4_num
+
                     if (response.data.list.wordNum.word1_new == 1) {
                       nowThis.alert_5_1 = true
                     } else {
@@ -196,10 +205,10 @@
       },
       make_confirm(){
         var now_this = this
-        axios.post('http://192.168.1.25/gxw_mobile3/shop/love/exchangeword?query={"user_id":' + now_this.id_num + "}")
+        axios.post(this.hostUrl+'/shop/love/exchangeword?query={"user_id":' + now_this.id_num + "}")
           .then(function (response) {
             if (response.data.result == true) {
-              axios.get('http://192.168.1.25/gxw_mobile3/Shop/Loves/homeIndex?query={"user_id":' + now_this.id_num + "}").then(function (res) {
+              axios.get(now_this.hostUrl+'/Shop/Loves/homeIndex?query={"user_id":' + now_this.id_num + "}").then(function (res) {
 
                               if(res.data.list.wordNum.word4_num!=0){
                                 now_this.wordNum.word1_num = res.data.list.wordNum.word1_num
@@ -242,7 +251,12 @@
 
       },
       warm_app(val){
-        this.alert_app = val
+        this.alert_app =true
+        var now_this=this
+        setTimeout(function () {
+          now_this.alert_app=false
+        },1500)
+
       }
       ,
       isTrue(){
@@ -264,7 +278,7 @@
         if (window.O2OHome) {
           O2OHome.gotoTabIndex('0')
         } else {
-          /*  window.location.href="cn/active_homepage.html "//去抽奖要跳转的绝对路径*/
+            window.location.href="cn/active_homepage.html "//去抽奖要跳转的绝对路径
         }
       }
     }
