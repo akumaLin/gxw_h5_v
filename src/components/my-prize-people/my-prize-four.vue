@@ -53,7 +53,6 @@
 
 
             toShare(){
-              console.log()
               if(window.O2OHome){
                   if(this.app_num_index==1){
                     O2OHome.share([this.hostUrl+"/love/images/520.a2822b5.png",this.hostUrl+"/love/cn/active_homepage.html?code="+this.code_id,"赶快加入我们活动吧"])

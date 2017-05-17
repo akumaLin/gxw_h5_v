@@ -12,18 +12,16 @@
       </ul>
     </div>
     <div class="no_div"></div>
-    <myPrize  class="my_prize_height"></myPrize>
+
   </div>
 </template>
 
 <script>
-  import myPrize from "@/pages/my-prize/my-prize.vue"
+
   import axios from "axios"
   export default {
     name: 'hello',
-    components:{
-      myPrize
-    },
+
     data () {
       return {
         type:"",
