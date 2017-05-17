@@ -17,6 +17,17 @@
     export default {
         name: 'myPrizeFour',
         props:["shareUser","app_num_index"],
+         created(){
+           let myhref=window.location.href
+             if(this.getCookie("GXW_code")!=0||this.getCookie("GXW_code")!=null){
+               this.code_id=this.getCookie("GXW_code")
+             } else if(myhref.indexOf("code_id")!=-1){
+                let code_id=myhref.substring(myhref.indexOf("code_id")+8)
+                this.code_id=code_id
+           }else{
+
+           }
+         },
        methods:{
             more(){
               if(window.O2OHome){
@@ -25,13 +36,29 @@
                 top.location.href=this.hostUrl+"mobile/index.php?r=user"//更多邀请要跳转的绝对路径
               }
             },
+         getCookie:function(GXW_user_id){
+           if (document.cookie.length>0)
+           {
+             var c_start=document.cookie.indexOf(GXW_user_id + "=")
+             if (c_start!=-1)
+             {
+               c_start=c_start + GXW_user_id.length+1
+               var c_end=document.cookie.indexOf(";",c_start)
+               if (c_end==-1) c_end=document.cookie.length
+               return unescape(document.cookie.substring(c_start,c_end))
+             }
+           }
+           return null
+         },
+
+
             toShare(){
               console.log()
               if(window.O2OHome){
-                  if(this.app_num_index==2){
-                    O2OHome.share([this.hostUrl+"/love/images/520.a2822b5.png",this.hostUrl+"/love/cn/active_homepage.html?code=638806","赶快加入我们活动吧"])
+                  if(this.app_num_index==1){
+                    O2OHome.share([this.hostUrl+"/love/images/520.a2822b5.png",this.hostUrl+"/love/cn/active_homepage.html?code="+this.code_id,"赶快加入我们活动吧"])
                   }else {
-                    O2OHome.share(this.hostUrl+"/love/images/520.a2822b5.png",this.hostUrl+"/love/cn/active_homepage.html?code=638806","赶快加入我们活动吧")
+                    O2OHome.share(this.hostUrl+"/love/images/520.a2822b5.png",this.hostUrl+"/love/cn/active_homepage.html?code="+this.code_id,"赶快加入我们活动吧")
                   }
 
               }else {

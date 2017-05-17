@@ -2,7 +2,7 @@ import Vue      from 'vue'
 import Router   from 'vue-router'
 import myPrize  from '@/pages/my-prize/my-prize.vue'
 import newPeople  from '@/pages/new-people/new-people.vue'
-
+import home  from '@/pages/home/home.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -17,5 +17,10 @@ export default new Router({
       name: 'newPeople',
       component: newPeople
     },
+    {
+      path: '/home',
+      name: 'home',
+      component:home
+    }
   ]
 })

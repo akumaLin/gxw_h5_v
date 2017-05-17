@@ -112,6 +112,7 @@
         code: '',
         s_code: "",
         acode: "获取验证码",
+        reload_isapp:"",
         write_tel_div: false,
         showRules: false,
         bonus_list: [
@@ -212,13 +213,18 @@
         }
       },
       go_for_love(){
-        window.location.href="cn/forlove_participate.html"
+        window.location.href="cn/forlove_participate.html?"+this.reload_isapp
       }
     },
 
     created(){
       let nowThis = this
       let my_href = window.location.href
+      let reload_isapp_index = my_href.lastIndexOf("?")
+               if(reload_isapp_index >-1){
+                 let reload_isapp=my_href.substring(reload_isapp_index+ 1)
+                 this.reload_isapp=reload_isapp  //获取？后面所以参数
+               }
       let url_index = my_href.lastIndexOf("&")
       if (url_index > -1) {
         let user_id = my_href.substring(url_index + 1)

@@ -128,6 +128,8 @@
       if(this.id_num==null ||this.id_num==0){
         if (window.O2OHome){
           O2OHome.isLogin()
+        }else {
+
         }
       }else{
               let nowThis = this
