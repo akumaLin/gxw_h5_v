@@ -22,7 +22,7 @@
         <div class="btn_14" @touchstart="is_confirm=false">我点错了</div>
       </div>
     </div>
-    <my-prize-four :app_num_index="app_num_index" :shareUser="shareUser" @a_app="warm_app"></my-prize-four>
+    <my-prize-four :app_num_index="app_num_index" :id_num="id_num" :shareUser="shareUser" @a_app="warm_app"></my-prize-four>
     <div style="position:relative">
       <p class="p-title">
         我的奖品

@@ -13,12 +13,17 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-
+  import axios from 'axios';
     export default {
         name: 'myPrizeFour',
-        props:["shareUser","app_num_index"],
+        props:["shareUser","app_num_index","id_num"],
+         data(){
+            return{
+                my_code:""
+            }
+         },
          created(){
-           let myhref=window.location.href
+         /*  let myhref=window.location.href
              if(this.getCookie("GXW_code")!=0||this.getCookie("GXW_code")!=null){
                this.code_id=this.getCookie("GXW_code")
              } else if(myhref.indexOf("code_id")!=-1){
@@ -26,7 +31,14 @@
                 this.code_id=code_id
            }else{
 
-           }
+           }*/
+           var nowThis=this
+           axios.get(nowThis.hostUrl+'/Shop/Loves/is_user_pass?query={"user_id":' + this.id_num + '}')
+             .then(function (res) {
+               nowThis.my_code=res.data.code
+             })
+
+
          },
        methods:{
             more(){
@@ -55,9 +67,9 @@
             toShare(){
               if(window.O2OHome){
                   if(this.app_num_index==1){
-                    O2OHome.share([this.hostUrl+"/love/images/520.a2822b5.png",this.hostUrl+"/love/cn/active_homepage.html?code="+this.code_id,"赶快加入我们活动吧"])
+                    O2OHome.share([this.hostUrl+"/love/images/520.a2822b5.png",this.hostUrl+"/love/cn/active_homepage.html?code="+this.my_code,"赶快加入我们活动吧"])
                   }else {
-                    O2OHome.share(this.hostUrl+"/love/images/520.a2822b5.png",this.hostUrl+"/love/cn/active_homepage.html?code="+this.code_id,"赶快加入我们活动吧")
+                    O2OHome.share(this.hostUrl+"/love/images/520.a2822b5.png",this.hostUrl+"/love/cn/active_homepage.html?code="+this.my_code,"赶快加入我们活动吧")
                   }
 
               }else {
