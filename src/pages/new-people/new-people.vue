@@ -163,7 +163,7 @@
               }
             }, 1000)
 
-            axios.post('https://m.gxw520.com/user/sms/send?query={"mobile":' + '"' + this.tel + '"' + "," + '"flag":"login"' + "}").then(response => {
+            axios.post(this.hostUrl+'/user/sms/send?query={"mobile":' + '"' + this.tel + '"' + "," + '"flag":"login"' + "}").then(response => {
 
             })
           } else {
@@ -175,12 +175,12 @@
       rightCode(){
         var nowThis = this
         if ((/^1[3|4|5|7|8][0-9]{9}$/.test(this.tel))) {
-          axios.post('https://m.gxw520.com/user/index/changephone?query={"userid":' + '"' + this.id_num + '"' + "," + '"tel":' + '"' + this.tel + '"' + "," + '"smscode":' + '"' + this.s_code + '"' + "}")
+          axios.post(nowThis.hostUrl+'/user/index/changephone?query={"userid":' + '"' + this.id_num + '"' + "," + '"tel":' + '"' + this.tel + '"' + "," + '"smscode":' + '"' + this.s_code + '"' + "}")
             .then(function (response) {
               if (response.data.result == true) {
                 nowThis.write_tel_div = false
                 nowThis.is_confirm = true
-                axios.get('https://m.gxw520.com/user/index/getXinBonus?query={"user_id":' + '"' + nowThis.id_num + '"'+ "}")
+                axios.get(nowThis.hostUrl+'/user/index/getXinBonus?query={"user_id":' + '"' + nowThis.id_num + '"'+ "}")
                   .then(function (res) {
                              if(res.data.result==true){
 
@@ -191,12 +191,7 @@
               } else {
                 nowThis.warminfo = true
                 /* nowThis.warmtext = response.data.message*/
-                if (response.data.message == "请先完成实名认证!") {
-                  nowThis.warmtext = "您的手机号已经绑定过了！"
-                } else {
                   nowThis.warmtext = response.data.message
-                }
-
               }
             })
         } else {
