@@ -16,6 +16,7 @@
   right: 0;
   margin:auto;
   height: auto;
+  width: 92%;
   li{
     float: left;
     margin-right: 4.1vw;
@@ -280,3 +281,28 @@ h2{
   width: 100vw
 }
 */
+.btn_bot{
+  display: flex;
+  width: 66.66vw;
+  height: 10.4vw;
+  border-radius:0 0 2.13vw 2.13vw!important;
+  background:#FF3C07;
+  position: absolute;
+  bottom: 0;
+  line-height: 10.4vw;
+}
+.btn_14{
+  flex: 1;
+  color: white;
+  height: 7vw;
+  line-height: 7vw;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+  top:0;
+  bottom: 0;
+  margin: auto;
+  &:first-child{
+    border-right: 0.5px solid white;
+  }
+}
