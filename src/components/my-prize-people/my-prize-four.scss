@@ -3,32 +3,32 @@
 }
 
 .my-user {
-  margin-top: 5vw;
-  padding:3vw 4.2vw 0 4.2vw;
+  margin-top: 1.5rem;
+  padding:0.9rem 1.26rem 0 1.26rem;
   overflow: hidden;
   width: 100%;
   box-sizing: border-box;
   li {
-    margin-bottom: 1.2vw;
+    margin-bottom:0.36rem;
     float: left;
-    width: 42.9vw;
-    height: 11.46vw;
-    line-height: 11.46vw;
+    width: 12.87rem;
+    height: 3.438rem;
+    line-height: 3.438rem;
     background: #FFFFFF;
     border: 1px solid #E4E4E4;
     border-radius: 4px;
     &:nth-child(odd) {
-      margin-right: 2.66vw;
+      margin-right: 0.798rem;
     }
 
   }
 }
 
 .user-head {
-  width: 8.26vw;
-  height: 8.26vw;
+  width: 2.478rem;
+  height: 2.478rem;
   vertical-align: middle;
-  margin: 0 3vw 0 3vw;
+  margin: 0 0.9rem 0 0.9rem;
   display: inline-block;
   border-radius: 50%;
   border: 1px solid #E4E4E4;
@@ -36,16 +36,16 @@
 }
 .name{
   vertical-align: middle;
-  line-height: 8.26vw;
+  line-height: 2.478rem;
   display: inline-block;
-  width: 25vw;
-  height: 8.26vw;
+  width: 7.5rem;
+  height: 2.478rem;
   white-space: nowrap;
   word-wrap:break-word;
   overflow: hidden;
   text-overflow: ellipsis;
   font-family: '.PingFangSC-Regular';
-  font-size: 3rem;
+  font-size: 1rem;
   color: #494949;
   letter-spacing: -0.5px;
 }

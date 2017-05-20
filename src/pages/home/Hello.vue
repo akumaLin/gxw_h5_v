@@ -39,8 +39,8 @@
     z-index: 9999;
     top: 0;
     transform: translateY(0);
-    width: 100vw;
-    height: 11.73vw;
+    width: 100%;
+    height: 3.519rem;
     background: #E32C2C !important;
  /*   padding-top: 3vw;*/
 
@@ -48,8 +48,8 @@
   .tab_wrap ul{
     overflow: hidden;
    /* margin-top: 5px;*/
-    height: 11.73vw;
-    line-height: 11.73vw;
+    height:3.519rem;
+    line-height: 3.519rem;
   }
   .tab_wrap li{
     float: left;
@@ -57,7 +57,7 @@
     text-align: center;
   }
   .tab_wrap li a{
-    font-size: 4.2vw;
+    font-size: 1.26rem;
     font-weight:bolder;
     font-family: '.PingFangSC-Regular';
 
@@ -71,23 +71,23 @@
   }
 
   .line_bot_div{
-    height: 0.4vw;
+    height: 0.12rem;
     width: 70%;
     background: white;
     position: absolute;
     left: 0;
     right: 0;
     margin: auto;
-    bottom: 2vw;
+    bottom: 0.6rem;
   }
   .no_div {
-    height: 11.73vw
+    height: 3.519rem
   }
 
   .tab_home {
     background: #E32C2C !important;
-    height: 7.78vw;
-    width: 90vw !important;
+    height:2.334rem;
+    width: 27rem !important;
     margin: auto;
 
   }
@@ -97,7 +97,7 @@
   }
 
   .mu-tab-text {
-    font-size: 3.5vw !important;
+    font-size: 1.05rem !important;
     white-space: nowrap;
   }
 
@@ -108,6 +108,6 @@
     overflow: scroll;
   }*/
   .my_prize_height{
-    height: 85.22vh;
+    height: 85%;
   }
 </style>

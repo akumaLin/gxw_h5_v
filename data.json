@@ -9,7 +9,7 @@
         "word4_num": "4"
       },
       "loveTitle": {
-        "love_id": "1",
+        "money": "1",
         "likes": "2",
         "username": "231",
         "user_img": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=6509514,3865858695&fm=117&gp=0.jpg",
@@ -21,7 +21,10 @@
         "pointNum": "14"
       },
       "shareUser": [
-
+        {"avatar":"qwe","username":"eqweweq","new_user_id":"12312"},
+        {"avatar":"qwe","username":"eqweweq","new_user_id":"12312"},
+        {"avatar":"qwe","username":"eqweweq","new_user_id":"12312"}, {"avatar":"qwe","username":"eqweweq","new_user_id":"12312"},
+        {"avatar":"qwe","username":"eqweweq","new_user_id":"12312"}
       ],
       "prize": [
         {

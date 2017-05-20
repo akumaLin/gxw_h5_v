@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="my-prize-one">
   <div class="my-prize-one" :style="{background: 'url(' +my_prize_one_bg+ ') no-repeat',backgroundSize:'100% 100%'}">
     <p class="p-title">
       集赞数字卡片

@@ -1,32 +1,32 @@
 .s-card{
-  width: 14.7vw;
-  height: 16.5vw;
+  width: 4.41rem;
+  height: 4.95rem;
   border-radius: 1.86vw;
   border:1px solid gainsboro ;
   display: inline-block;
   margin-right: 7.25vw;
   position: relative;
   &:first-child{
-    margin-left: 7.4vw;
+    margin-left: 2.22rem;
   }
   .card-badge{
-    padding-left: 1.5vw;
-    padding-right: 1.5vw;
-    height:4.57vw;
-    border-radius: 2.7vw;
-    line-height:4.57vw;
+    padding-left: 0.525rem;
+    padding-right: 0.525rem;
+    height:1.371rem;
+    border-radius: 0.81rem;
+    line-height:1.371rem;
     background: #FFFFFF;
     border:0.5px solid  #F98B0E;
     font-family: '.PingFangSC-Regular';
-    font-size: 3rem;
+    font-size: 1rem;
     color: #F98B0E;
     letter-spacing: -0.5px;
     position: absolute;
-    right: -3vw;
-    top:-1.5vw;
+    right: -0.9rem;
+    top:-0.45rem;
   }
 }
 .red-border{
-  padding: 0.4vw;
+  padding: 0.12rem;
   border-image:url("../../assets/images/select.png") 4 4 stretch;
 }

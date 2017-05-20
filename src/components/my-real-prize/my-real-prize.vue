@@ -38,18 +38,18 @@
 <style lang="scss" rel="stylesheet/scss">
 
   .my-p{
-    padding-top: 6vw;
-    padding-bottom: 6vw;
-    width: 92.2vw;
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
+    width: 27.66rem;
     margin: auto;
-    margin-top:4vw;
-    border-radius: 1.9vw;
+    margin-top:1.2rem;
+    border-radius: 0.57rem;
     border: 2px solid #FE4744;
     border-right: none;
     border-left: none;
     background: #FFFFFF;
     color: #FE4744;
-    font-size: 3rem;
+    font-size: 1rem;
     box-sizing:border-box;
 
     white-space: nowrap;
@@ -60,20 +60,20 @@
 
   }
   .p_height{
-    height: 46vw;
+    height: 13.8rem;
   }
   .p-pic{
     overflow-y: scroll;
    /* margin: 4vw;*/
     display: inline-block;
-    height: 19.7vw;
-    width: 20vw;
-    margin-top: 5.2vw;
+    height:5.91rem;
+    width: 6rem;
+    margin-top: 1.56rem;
     border: 1px solid #C7C7C7;
-    margin-bottom: 2vw;
+    margin-bottom: 0.6rem;
   }
 .kk{
-  padding-left: 4vw;
+  padding-left:1.2rem;
   color: #9C9C9C ;
 }
   .prize_text{

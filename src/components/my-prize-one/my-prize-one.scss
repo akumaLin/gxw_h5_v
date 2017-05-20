@@ -1,33 +1,38 @@
+
+#my-prize-one{
+ /* height: 100%;*/
+  width: 100%;
+}
+
 .my-prize-one{
   height: 410px;
-  width: 100vw;
+  width: 100%;
   /*background: url("../../assets/images/bg@2x.png")no-repeat;*/
-
   overflow: hidden;
   position: relative;
 }
 .rules{
   display: inline-block;
   background: #F88C8C;
-  border-radius: 2.5vw 0 0 2.5vw;
+  border-radius: 0.75rem 0 0 0.75rem;
   color: white;
-  width: 17vw;
-  font-size: 3rem;
-  line-height:5.5vw;
+  width: 5.1rem;
+  font-size: 1rem;
+  line-height:1.65rem;
   text-align: center;
   vertical-align: middle;
-  padding-left: 1.5vw;
+  padding-left: 0.45rem;
   position: absolute;
   right: 0;
-  top: 7vw;
+  top: 2.1rem;
 }
 .j_card{
   display: block;
   position: absolute;
-  bottom:4vw;
-  right: 4vw;
+  bottom:1.2rem;
+  right: 1.2rem;
   color: #FE4744;
-  font-size: 3rem;
+  font-size: 1rem;
 }
 
 .carousel-3d-container {
@@ -51,8 +56,8 @@
   top:0;
 }
 .Pop-ups{
-  width:100vw;
-  height:100vh;
+  width:100%;
+  height:100%;
   background: rgba(0,0,0,0.60);
   position: fixed;
   top:0;
@@ -60,8 +65,8 @@
   z-index: 99;
 }
 .img{
-  width: 90.1vw;
-  height: 70vh;
+  width: 27rem;
+  height: 70%;
   overflow: scroll;
   position: fixed;
   top:0;
@@ -69,14 +74,14 @@
   left: 0;
   right: 0;
   margin: auto;
-  border-radius: 2vw;
-  -webkit-border-radius: 2vw;
+  border-radius: 0.6rem;
+  -webkit-border-radius: 0.6rem;
   background: white;
   z-index: 2;
 }
 .img_margin{
-  width: 90.1vw;
-  height: 70vh;
+  width: 27rem;
+  height: 70%;
   overflow: scroll;
   position: fixed;
   background: white;
@@ -85,12 +90,12 @@
   left: 0;
   right: 0;
   margin: auto;
-  border-radius: 2vw;
+  border-radius: 0.6rem;
   z-index: 2;
 }
 .img_rules{
   width: 100%;
-  height: 182.933vw;
+  height: 54.8799rem;
  /* background:url("../../assets/images/activeRu.png") no-repeat;
   background-size: 100% 100%;*/
   position: relative;
@@ -99,11 +104,11 @@
 }
 .close_x{
   display: block;
-  width: 5.33vw;
-  height: 5.33vw;
+  width: 1.6rem;
+  height: 1.6rem;
   background: url("../../assets/images/x@2x.png") no-repeat;
   background-size: 100% 100%;
   position: absolute;
-  top:2.5vw;
-  right: 3.5vw;
+  top:0.75rem;
+  right: 1rem;
 }

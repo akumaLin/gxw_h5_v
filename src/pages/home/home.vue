@@ -45,7 +45,7 @@
       }
     }
     , components: {
-      hello
+        hello
       , myPrize
     },
     created(){
@@ -135,12 +135,12 @@
   }
 .my_prize_height{
   position: absolute;
-  top:11.73vw;
-  height: 82.5vh;
+  top:3.519rem;
+  height: 82.5%;
   overflow: scroll;
 }
   .toolbar li {
-    height: 13.06vw;
+    height: 3.918rem;
     float: left;
     width: 25%;
   }
@@ -154,16 +154,16 @@
   .tab_text {
     text-align: center;
     color: #929292;
-    font-size: 3vw;
+    font-size: 0.9rem;
 
   }
 
   .tab_text_icon {
-    margin-bottom: 1vw;
+    margin-bottom: 0.3rem;
   }
 
   .tab_bot {
-    font-size: 6vw;
+    font-size: 1.8rem
   }
 
   .router-link-active .tab_text {
@@ -174,7 +174,7 @@
     display: block;
     /*height:5.8vw ;
     width: 6vw;*/
-    width: 7vw;
+    width: 2.1rem;
     height: 5.5vw;
     margin: auto;
     margin-top: 1.8vw;

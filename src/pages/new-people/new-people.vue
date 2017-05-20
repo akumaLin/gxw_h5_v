@@ -22,8 +22,8 @@
     </ul>
     <div class="Pop-ups" v-if="showRules">
       <div class="img">
-        <div class="img_margin">
-          <div class="img_rules" @touchstart.stop>
+      <!--  <div class="img_margin">-->
+          <div class="img_rules">
             <h1>新人专享优惠券规则</h1>
             <p>188元红包仅限新用户领取一次此红包。同一登录帐号、同一手机号、同一支付账号、同一IP地址、同一终端设备号或其他合理显示为同一用户的情形，均视同一用户。</p>
             <p>2) 新用户登录共享网app直接注册并完成手机验证，即可一键领取全部188元组合优惠券；</p>
@@ -42,7 +42,7 @@
           </div>
           <div class="close_x" @touchstart="showRules=false"
                :style="{background: 'url(' +close_x_bg+ ') no-repeat',backgroundSize:'100% 100%'}"></div>
-        </div>
+     <!--   </div>-->
       </div>
     </div>
     <transition name="fade">

@@ -1,12 +1,12 @@
 .my-prize-five{
   position: relative;
-  padding-bottom: 11vh;
+  padding-bottom: 7rem;
 }
 .coupon{
-  height: 22.66vw;
-  width: 91.73vw;
+  height: 6.798rem;
+  width: 27.519rem;
   margin: auto;
-  margin-top: 4vw;
+  margin-top: 1.2rem;
 position: relative;
 
 }
@@ -23,12 +23,12 @@ position: relative;
   background-size: 100% 100%;
 }
 .coupon_icon{
-  width: 18vw;
-  height: 18vw;
-  line-height: 18vw;
+  width: 5rem;
+  height: 5rem;
+  line-height: 0.54rem;
   vertical-align: middle;
   position: absolute;
-  right: 3vw;
+  right: 0.9rem;
   top:0;
   bottom: 0;
   margin: auto;
@@ -36,18 +36,18 @@ position: relative;
 }
 .money{
   display: inline-block;
-  height: 22.66vw;
-  width: 25vw;
-  line-height:22.66vw;;
+  height:6.798rem;
+  width:7.5rem;
+  line-height:6.798rem;
   font-family: 'LucidaGrande';
   vertical-align: top;
-  font-size: 5rem;
+  font-size: 1rem;
   color: #FFFFFF;
   text-align: center;
   letter-spacing: -0.83px;
   span{
     font-family: '.PingFangSC-Regular';
-    font-size:7rem;
+    font-size:3rem;
     color: #FFFFFF;
     letter-spacing: -2px;
   }
@@ -57,44 +57,44 @@ position: relative;
   font-size: 1rem;
   letter-spacing: -1.02px;
   display: inline-block;
-  padding-left: 4vw;
+  padding-left: 1.2rem;
   position: absolute;
   top:0;
   bottom: 0;
   margin: auto;
-  height: 15.2vw;
+  height: 4.56rem;
   p{
-    margin-top: 1.4vw;
+    margin-top: 0.42rem;
     white-space: nowrap;
     font-family: 'PingFangSC-Regular';
-    font-size: 3rem;
+    font-size: 1rem;
     color:gray;
     letter-spacing: -1.02px;
   }
 }
 .use{
-  height: 6.1vw;
-  line-height: 6.1vw;
+  height: 1.83rem;
+  line-height: 1.83rem;
   text-align: center;
-  width: 18.66vw;
+  width: 5.598rem;
   font-family: PingFangSC-Regular;
-  font-size: 3rem;
+  font-size: 1rem;
   color: #D11414;
   letter-spacing: 0.33px;
   border: 1px solid #D11414;
   background: none;
-  border-radius:3vw ;
+  border-radius:0.9rem ;
   position: absolute;
   z-index: 88;
   top: 50%;
   transform: translateY(-50%);
-  right: 3vw;
+  right: 0.9rem;
   box-sizing: border-box;
 }
 .no_things{
   font-family: '.PingFangSC-Regular';
-  padding-left: 8vw;
-  font-size: 3.2rem;
+  padding-left: 2.4rem;
+  font-size: 1rem;
   color: #888888;
   letter-spacing: -0.41px;
 }
