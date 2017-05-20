@@ -57,8 +57,8 @@
     text-align: center;
   }
   .tab_wrap li a{
-    font-size: 3.5vw;
-    font-weight: normal;
+    font-size: 4.2vw;
+    font-weight:bolder;
     font-family: '.PingFangSC-Regular';
 
     color: #E8E8E8;
@@ -78,7 +78,7 @@
     left: 0;
     right: 0;
     margin: auto;
-    bottom: 3vw;
+    bottom: 2vw;
   }
   .no_div {
     height: 11.73vw

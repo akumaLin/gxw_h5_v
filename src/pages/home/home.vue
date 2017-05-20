@@ -52,9 +52,7 @@
       this.id_num = this.getCookie("GXW_user_id")
 
         if(this.id_num==null ||this.id_num==0){
-
-
-       window.location.href=this.gxwloginUrl + 'mobile/index.php?r=user/login&back_act=' + this.hostUrl + 'love/dist/index.html#/home'
+       window.location.href=this.gxwloginUrl + 'mobile/index.php?r=user/login&back_act=' + this.hostUrl + 'love/index.html#/home'
        }
     },
     methods: {

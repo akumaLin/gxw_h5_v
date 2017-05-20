@@ -189,9 +189,17 @@
                              }
                   })
               } else {
+
+                      if(res.data.message=="请先完成实名认证!"){
+
+                        nowThis.warmtext="您已完成绑定!"
+                      }else {
+                        nowThis.warmtext = response.data.message
+                      }
+
                 nowThis.warminfo = true
                 /* nowThis.warmtext = response.data.message*/
-                  nowThis.warmtext = response.data.message
+
               }
             })
         } else {

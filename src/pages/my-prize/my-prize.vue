@@ -38,7 +38,7 @@
     </div>
      </transition>
     <transition name="fade">
-      <div class="Cover_all" v-if="alert_5">
+      <div class="Cover_all" v-if="alert_5==true">
         <div class="Cover"></div>
         <div class="img" :style="{background: 'url(' +alert_520+ ') no-repeat',backgroundSize:'100% 100%'}">
           <div class="close" @touchstart="alert_5=false"></div>
@@ -46,7 +46,7 @@
       </div>
     </transition>
     <transition name="fade">
-      <div class="Cover_all" v-if="alert_h">
+      <div class="Cover_all" v-if="alert_h==true">
         <div class="Cover"></div>
         <div class="img" :style="{background: 'url(' +alert_hec+ ') no-repeat',backgroundSize:'100% 100%'}">
           <div class="close" @touchstart="alert_h=false"></div>
@@ -145,13 +145,13 @@
 
                                 nowThis.wordNum.word4_num = response.data.list.wordNum.word4_num
 
-                    if (response.data.list.wordNum.word1_new == 1) {
-                      nowThis.alert_5_1 = true
+                    if (response.data.list.wordNum.word1_new==1) {
+                      nowThis.alert_5 = true
                     } else {
                       nowThis.alert_5_1 = false
                     }
                     if (response.data.list.wordNum.word4_new == 1) {
-                      nowThis.alert_h_1 = true
+                      nowThis.alert_h = true
                     } else {
                       nowThis.alert_h_1 = false
                     }

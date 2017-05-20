@@ -137,7 +137,7 @@ white-space: nowrap;
     opacity: 0.7;
   }
   .img{
-    height: 80vw;
+    height: 90vw;
     width: 80vw;
     position: absolute;
     top:0;
@@ -158,13 +158,13 @@ white-space: nowrap;
 
 }
 .fade-enter-active, .fade-leave-active {
- /* transform:scale(1);*/
+  transform:scale(1);
   transition: all 1s ;
   opacity:1
 }
 .fade-enter, .fade-leave-active {
   opacity: 0;
- /* transform:scale(0.1);*/
+  transform:scale(0.1);
   transition: all 1s
 
 }
