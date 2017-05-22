@@ -16,7 +16,7 @@
     border-radius: 0.81rem;
     line-height:1.371rem;
     background: #FFFFFF;
-    border:0.5px solid  #F98B0E;
+    border:1px solid  #F98B0E;
     font-family: '.PingFangSC-Regular';
     font-size: 1rem;
     color: #F98B0E;
@@ -27,6 +27,6 @@
   }
 }
 .red-border{
-  padding: 0.12rem;
-  border-image:url("../../assets/images/select.png") 4 4 stretch;
+  padding: 0.14rem;
+  border-image:url("../../assets/images/select.png") 5 5 stretch;
 }

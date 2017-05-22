@@ -37,7 +37,7 @@ apiRoutes.get('/bonus_list', function (req, res) {
 apiRoutes.get('/prizes', function (req, res) {
   res.json({
     errno: 0,
-    data: prizes
+    prizes: prizes
   })
 })
 app.use('/api', apiRoutes)

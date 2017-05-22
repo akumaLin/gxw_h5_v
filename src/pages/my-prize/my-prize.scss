@@ -95,7 +95,7 @@ white-space: nowrap;
  /* margin: auto;*/
   font-size: 1.11rem;
   line-height: 1.5;
-  border: 0.5px solid #FF3C07;
+  border: 1px solid #FF3C07;
   p{
     padding: 2.4rem 1.758rem 0 1.758rem;
   }
@@ -124,7 +124,7 @@ white-space: nowrap;
 /*  bottom: 0;*/
   margin: auto;
   &:first-child{
-    border-right: 0.5px solid white;
+    border-right: 1px solid white;
   }
 }
 .Cover_all{
