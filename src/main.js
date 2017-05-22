@@ -13,6 +13,7 @@ Vue.config.productionTip = false
 Vue.prototype.hostUrl = (function () {
   var is_product = document.domain == 'm.gxw520.com';
   var hostUrl = is_product ? 'https://m.gxw520.com/' : 'http://192.168.1.10/gxw_mobile3/';
+ /* var hostUrl = is_product ? 'http://192.168.1.10/gxw_mobile3/' : 'https://m.gxw520.com/';*/
   return hostUrl
 })()
 Vue.prototype.gxwloginUrl = (function () {

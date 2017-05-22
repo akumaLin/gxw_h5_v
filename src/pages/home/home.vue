@@ -50,10 +50,10 @@
     },
     created(){
       this.id_num = this.getCookie("GXW_user_id")
-
+/*
         if(this.id_num==null ||this.id_num==0){
        window.location.href=this.gxwloginUrl + 'mobile/index.php?r=user/login&back_act=' + this.hostUrl + 'love/index.html#/home'
-       }
+       }*/
     },
     methods: {
       getCookie: function (GXW_user_id) {
@@ -175,9 +175,9 @@
     /*height:5.8vw ;
     width: 6vw;*/
     width: 2.1rem;
-    height: 5.5vw;
+    height: 1.65rem;
     margin: auto;
-    margin-top: 1.8vw;
-    margin-bottom: 1vh;
+    margin-top: 0.54rem;
+    margin-bottom: 0.1rem;
   }
 </style>
