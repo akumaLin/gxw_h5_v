@@ -18,7 +18,7 @@
       <li>
         <a href="javascript:;" @touchstart="go_coupon">查看已领优惠券</a>
       </li>
-      <li><a href="#" @touchstart="showRules=true">规则说明</a></li>
+      <li><a href="javascript:;" @touchstart="showRules=true">规则说明</a></li>
     </ul>
     <div class="Pop-ups" v-if="showRules">
       <div class="img">
@@ -190,7 +190,7 @@
                   })
               } else {
 
-                      if(res.data.message=="请先完成实名认证!"){
+                      if(response.data.message=="请先完成实名认证!"){
 
                         nowThis.warmtext="您已完成绑定!"
                       }else {

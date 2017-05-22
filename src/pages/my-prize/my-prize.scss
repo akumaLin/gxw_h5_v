@@ -85,11 +85,14 @@ white-space: nowrap;
   color:#FF3C07 ;
   background: white;
   position: fixed;
-  top:0;
+  /*top:0;
   left: 0;
   bottom: 0;
-  right: 0;
-  margin: auto;
+  right: 0;*/
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+ /* margin: auto;*/
   font-size: 1.11rem;
   line-height: 1.5;
   border: 0.5px solid #FF3C07;
@@ -116,8 +119,9 @@ white-space: nowrap;
   vertical-align: middle;
   text-align: center;
   position: relative;
-  top:0;
-  bottom: 0;
+  top:50%;
+  transform: translateY(-50%);
+/*  bottom: 0;*/
   margin: auto;
   &:first-child{
     border-right: 0.5px solid white;
@@ -139,11 +143,14 @@ white-space: nowrap;
     height: 27rem;
     width: 24rem;
     position: absolute;
-    top:0;
+    /*top:0;
     left: 0;
     right: 0;
     bottom: 0;
-    margin: auto;
+    margin: auto;*/
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
   }
   .close{
     width: 2.4rem;
@@ -176,11 +183,14 @@ white-space: nowrap;
   color:  #e32c2c;
   border: 0.1px solid #e32c2c;
   position: fixed;
-  top:0;
+ /* top:0;
   bottom: 0;
   left: 0;
   right: 0;
-  margin: auto;
+  margin: auto;*/
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
   background: ghostwhite;
   font-size: 1rem;
 }
