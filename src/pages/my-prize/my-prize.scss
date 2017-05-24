@@ -165,13 +165,13 @@ white-space: nowrap;
 
 }
 .fade-enter-active, .fade-leave-active {
-  transform:scale(1);
+  /*transform:scale(1);*/
   transition: all 1s ;
   opacity:1
 }
 .fade-enter, .fade-leave-active {
   opacity: 0;
-  transform:scale(0.1);
+  /*transform:scale(0.1);*/
   transition: all 1s
 
 }

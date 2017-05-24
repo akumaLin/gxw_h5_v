@@ -57,10 +57,8 @@
     text-align: center;
   }
   .tab_wrap li a{
-    font-size: 1.26rem;
-    font-weight:bolder;
+    font-size: 1.28rem;
     font-family: '.PingFangSC-Regular';
-
     color: #E8E8E8;
     letter-spacing: -0.39px;
 
@@ -71,7 +69,7 @@
   }
 
   .line_bot_div{
-    height: 0.12rem;
+   border-bottom:3px solid #fff;
     width: 70%;
     background: white;
     position: absolute;

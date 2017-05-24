@@ -10,7 +10,7 @@
         <li>
           <button class="btn" v-if="pointCode >=10" @touchstart="isTrue">兑换14卡</button>
         </li>
-        <li>Tips：10张13卡可以兑换一张14卡，不含抽奖抽中的13卡</li>
+        <li>Tips：10张13卡可兑换一张14卡，仅购买积分卡所获得的13卡才可以兑换</li>
       </ul>
     </div>
     <div class="confirm_z" @touchmove.prevent v-if="is_confirm">
